@@ -13,12 +13,14 @@ namespace TCC.ViewModel
     public class StaticValuesTextViewModel : ViewModelBase
     {
         string _StaticText = "";
+        int _Type = 0;
 
         public StaticValuesTextViewModel()
         {
             Messenger.Default.Register<MessageStaticValue>(this, (MessageStaticValue) =>
             {
                 this.StaticText = MessageStaticValue.Val.Val;
+                this.Type = MessageStaticValue.Val.ID;
             });
         }
 
@@ -29,6 +31,16 @@ namespace TCC.ViewModel
             {
                 _StaticText = value;
                 RaisePropertyChanged("StaticText");
+            }
+        }
+
+        public int Type
+        {
+            get { return _Type; }
+            set
+            {
+                _Type = value;
+                RaisePropertyChanged("Type");
             }
         }
 

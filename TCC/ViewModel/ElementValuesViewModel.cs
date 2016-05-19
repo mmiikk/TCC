@@ -61,6 +61,22 @@ namespace TCC.ViewModel
                 if (ValueID.Selected == true)
                     ValueID = CurrentValue;
             });
+
+
+            Messenger.Default.Register<MessageStaticValue>(this, (MessageStaticValue) =>
+            {
+                if ((CurrentValue.ID >= 2000 && _CurrentValue.ID < 3000))
+                {
+                    BackColor.Val = MessageStaticValue.Val.Val;
+                    CurrentValue.Val = MessageStaticValue.Val.Val;
+                }
+
+                if ((CurrentValue.ID >= 1000 && CurrentValue.ID < 2000))
+                {
+                    FontColor.Val = MessageStaticValue.Val.Val;
+                    CurrentValue.Val = MessageStaticValue.Val.Val;
+                }
+            });
         }
 
         void SetActiveValue(Value val)
@@ -89,10 +105,13 @@ namespace TCC.ViewModel
 
             CurrentValue = val;
 
+           
             Messenger.Default.Send<MessageStaticValue>(new MessageStaticValue()
             {
-                Val  = this.CurrentValue
+                Val = this.CurrentValue,
+                Type = val.ID
             });
+
         }
 
      

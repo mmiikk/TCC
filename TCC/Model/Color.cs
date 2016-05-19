@@ -31,6 +31,8 @@ namespace TCC.Model
                 _R = value;
                 // Call OnPropertyChanged whenever the property is updated
                 OnPropertyChanged("R");
+                OnPropertyChanged("iRGB");
+                OnPropertyChanged("RGB");
             }
         }
 
@@ -42,6 +44,8 @@ namespace TCC.Model
                 _G = value;
                 // Call OnPropertyChanged whenever the property is updated
                 OnPropertyChanged("G");
+                OnPropertyChanged("iRGB");
+                OnPropertyChanged("RGB");
             }
         }
 
@@ -53,6 +57,8 @@ namespace TCC.Model
                 _B = value;
                 // Call OnPropertyChanged whenever the property is updated
                 OnPropertyChanged("B");
+                OnPropertyChanged("iRGB");
+                OnPropertyChanged("RGB");
             }
         }
 
@@ -63,7 +69,8 @@ namespace TCC.Model
             {
                 _iRGB = value;
                 OnPropertyChanged("iRGB");
-
+                
+                OnPropertyChanged("RGB");
             }
         }
 
@@ -72,7 +79,13 @@ namespace TCC.Model
         public string RGB
         {
             get { return System.Windows.Media.Color.FromRgb(Convert.ToByte(R), Convert.ToByte(G), Convert.ToByte(B)).ToString(); }
-           
+            set
+            {
+                int val = Convert.ToInt32(value);
+                G = val / 256 % 256;
+                B = (val / 256 / 256) % 256;
+                R = val % 256;
+            }
         }
         
 

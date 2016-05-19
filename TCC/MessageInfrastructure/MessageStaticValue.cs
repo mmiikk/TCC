@@ -10,5 +10,6 @@ namespace TCC.MessageInfrastructure
     class MessageStaticValue
     {
         public Value Val { get; set; }
+        public int Type { get; set; }
     }
 }

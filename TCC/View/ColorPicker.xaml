@@ -17,19 +17,23 @@
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.ListBox.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Button.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.CheckBox.xaml" />
-                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.ListBox.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.TextBox.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.PopupBox.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.RadioButton.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.ToggleButton.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Slider.xaml" />
             </ResourceDictionary.MergedDictionaries>
-
+           
             <Style TargetType="{x:Type ListBox}" BasedOn="{StaticResource MaterialDesignListBox}">
                 <Setter Property="Margin" Value="8 0 8 0" />
                 
             </Style>
+            <Style TargetType="{x:Type TextBox}" BasedOn="{StaticResource MaterialDesignTextBox}">
+                
+            </Style>
 
 
-            <BooleanToVisibilityConverter x:Key="booleanToVisibilityConverter" />
+         
           
             <Style TargetType="{x:Type TextBlock}">
                 <Setter Property="FontSize" Value="11"></Setter>
@@ -42,40 +46,85 @@
            
         </ResourceDictionary>
     </UserControl.Resources>
+    <Grid Margin="8" >
+        <Grid.Resources>
+            <BooleanToVisibilityConverter x:Key="booleanToVisibilityConverter" />
+        </Grid.Resources>
+        <materialDesign:Card  Background="{DynamicResource PrimaryHueDarkBrush}"  Visibility="{Binding Show,Converter={StaticResource booleanToVisibilityConverter}}" 
+                  Foreground="{DynamicResource PrimaryHueDarkForegroundBrush}"  Padding="8">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="50*"></ColumnDefinition>
-            <ColumnDefinition Width="50*"></ColumnDefinition>
+            <ColumnDefinition Width="80*"></ColumnDefinition>
+            <ColumnDefinition Width="20*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="70*"></RowDefinition>
             <RowDefinition Height="30*"></RowDefinition>
         </Grid.RowDefinitions>
-        <ItemsControl ItemsSource="{Binding Colors}" Grid.Column="0" Grid.Row="0">
-            <ItemsControl.ItemsPanel>
-                <ItemsPanelTemplate>
-                    <UniformGrid Columns="8" Margin="0" Width="auto" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-                    
-                    </UniformGrid>
-                </ItemsPanelTemplate>
-            </ItemsControl.ItemsPanel>
-            <ItemsControl.ItemTemplate>
-                <DataTemplate>
-                    <ItemsControl Margin="0">
-                        <Button Margin="2" Background="{Binding RGB}" Command="{Binding Path=DataContext.ColorClickCommand,  RelativeSource={RelativeSource Mode=FindAncestor,      
+
+                <materialDesign:Card  Background="{DynamicResource PrimaryHueLightBrush}"
+                  Foreground="{DynamicResource PrimaryHueLightForegroundBrush}"  Grid.Column="0" Grid.Row="0" Padding="8">
+                    <ItemsControl ItemsSource="{Binding Colors}">
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <UniformGrid Columns="8" Margin="0" Width="auto" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+
+                                </UniformGrid>
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <ItemsControl Margin="0">
+                                    <Button Margin="2" Background="{Binding RGB}" Command="{Binding Path=DataContext.ColorClickCommand,  RelativeSource={RelativeSource Mode=FindAncestor,      
                         AncestorType={x:Type Grid}} }" CommandParameter="{Binding RGB}" >
 
-                        </Button>
+                                    </Button>
+                                </ItemsControl>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
                     </ItemsControl>
-                </DataTemplate>
-            </ItemsControl.ItemTemplate>
-        </ItemsControl>
+                </materialDesign:Card>
 
-        <StackPanel Grid.Column="1" Grid.Row="0">
-            <TextBlock Background="{Binding SelectedColor.iRGB}" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Width="50" Height="50">fdfdf</TextBlock>
-            <TextBox Text="{Binding SelectedColor.iRGB}"></TextBox>
-        </StackPanel>
+            <materialDesign:Card  Background="{DynamicResource PrimaryHueLightBrush}" 
+                  Foreground="{DynamicResource PrimaryHueLightForegroundBrush}"  Grid.Column="1" Grid.Row="0" Padding="8" Margin="8 0 0 0">
+                    <StackPanel >
+                        <Button Background="{Binding SelectedColor.RGB}" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Width="auto" Height="auto"></Button>
+                        <TextBox Text="{Binding SelectedColor.iRGB}" TextAlignment="Center"></TextBox>
+                    </StackPanel>
+                </materialDesign:Card>
 
-        
+                <materialDesign:Card  Background="{DynamicResource PrimaryHueLightBrush}"
+                  Foreground="{DynamicResource PrimaryHueLightForegroundBrush}"  Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" Margin="0 8 0 0 ">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="10*"></ColumnDefinition>
+                            <ColumnDefinition Width="75*"></ColumnDefinition>
+                            <ColumnDefinition Width="15*"></ColumnDefinition>
+                                            
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"></RowDefinition>
+                            <RowDefinition Height="auto"></RowDefinition>
+                            <RowDefinition Height="auto"></RowDefinition>
+                        </Grid.RowDefinitions>
+
+                        <TextBlock Grid.Column="0" Grid.Row="0" Margin="0 4 0 4">R</TextBlock>
+                        <Slider Minimum="0" Maximum="255" Margin="0 4 0 4" Width="auto" Style="{StaticResource MaterialDesignSlider}" Value="{Binding SelectedColor.R}" TickFrequency="1" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" />
+                        <TextBox Grid.Column="2" Grid.Row="0"  Text="{Binding SelectedColor.R}" Margin="8 4 0 4" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" TextAlignment="Center"></TextBox>
+
+                        <TextBlock Grid.Column="0" Grid.Row="1" Margin="0 4 0 4">G</TextBlock>
+                        <Slider Minimum="0" Maximum="255" Margin="0 4 0 4" Width="auto" Style="{StaticResource MaterialDesignSlider}" Value="{Binding SelectedColor.G}" TickFrequency="1" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" />
+                        <TextBox Grid.Column="2" Grid.Row="1" Text="{Binding SelectedColor.G}" Margin="8 4 0 4" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" TextAlignment="Center"></TextBox>
+
+                        <TextBlock Grid.Column="0" Grid.Row="2" Margin="0 4 0 4">B</TextBlock>
+                        <Slider Minimum="0" Maximum="255" Margin="0 4 0 4" Width="auto" Style="{StaticResource MaterialDesignSlider}" Value="{Binding SelectedColor.B}" TickFrequency="1" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" />
+                        <TextBox Grid.Column="2" Grid.Row="2" Text="{Binding SelectedColor.B}" Margin="8 4 0 4" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" TextAlignment="Center"></TextBox>
+
+                    </Grid>
+                </materialDesign:Card>
+
+
+            </Grid>
+        </materialDesign:Card>
     </Grid>
 </UserControl>
