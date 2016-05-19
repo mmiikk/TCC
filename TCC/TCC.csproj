@@ -99,6 +99,7 @@
     <Compile Include="Helper\isNotConverter.cs" />
     <Compile Include="Helper\RGBConverter.cs" />
     <Compile Include="Helper\sqlWorker.cs" />
+    <Compile Include="Helper\VisibilityConverter.cs" />
     <Compile Include="MessageInfrastructure\MessageSelectedElements.cs" />
     <Compile Include="MessageInfrastructure\MessageElementsFromDB.cs" />
     <Compile Include="MessageInfrastructure\MessageException.cs" />
