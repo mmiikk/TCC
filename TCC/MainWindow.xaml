@@ -1,0 +1,48 @@
+﻿<metro:MetroWindow
+                   xmlns:metro="http://metro.mahapps.com/winfx/xaml/controls"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TCC"
+        xmlns:dragablz="clr-namespace:Dragablz;assembly=Dragablz"
+        xmlns:View="clr-namespace:TCC.View"  x:Class="TCC.MainWindow"
+                   GlowBrush="{DynamicResource AccentColorBrush}"
+                   BorderThickness="1"
+        mc:Ignorable="d"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        Background="{DynamicResource MaterialDesignPaper}"
+        TextElement.FontWeight="Medium"
+        TextElement.FontSize="14"
+        FontFamily="pack://application:,,,/MaterialDesignThemes.Wpf;component/Resources/Roboto/#Roboto"
+      DataContext="{Binding Main, Source={StaticResource Locator}}" 
+        Title="MainWindow">
+    <Grid>
+
+        <dragablz:TabablzControl>
+            <dragablz:TabablzControl.InterTabController>
+                <dragablz:InterTabController />
+            </dragablz:TabablzControl.InterTabController>
+            <TabItem Header="CONFIGURATOR">
+                <View:Configurator/>
+            </TabItem>
+           
+            <TabItem Header="SETTINGS">
+                <View:Settings/>
+             
+            </TabItem>
+          
+        </dragablz:TabablzControl>
+        <materialDesign:DialogHost IsOpen="{Binding ShowDialog}" >
+            <materialDesign:DialogHost.DialogContent>
+                <StackPanel  Margin="8 8 8 8">
+                    <TextBlock x:Name="ExceptionDialog" Text="{Binding Exception}" Width="auto" Height="auto"  TextWrapping="WrapWithOverflow">
+                    
+                </TextBlock>
+                    <Button x:Name="CloseBtn" Style="{StaticResource MaterialDesignFlatButton}" Command="{Binding CloseDialog}" HorizontalAlignment="Center">OK</Button>
+                </StackPanel>
+            </materialDesign:DialogHost.DialogContent>
+        </materialDesign:DialogHost>
+    </Grid>
+</metro:MetroWindow>
