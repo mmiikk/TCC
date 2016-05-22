@@ -12,7 +12,7 @@ namespace TCC.Services
     interface IDataAccessService
     {
         ObservableCollection<Element> GetAllElements(int StationID);
-       
+        Font GetFont(int StationID, int ElementID);
     }
     class DataAccessService : IDataAccessService
     {
@@ -51,7 +51,21 @@ namespace TCC.Services
             }
             return Elements;
         }
-     
-     
+
+        public Font GetFont(int StationID, int ElementID)
+        {
+            Font font = new Font();
+            try
+            {
+                font = sql.loadFont(StationID, ElementID);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return font;
+        }
+
+
     }
 }

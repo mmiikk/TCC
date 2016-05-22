@@ -5,6 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:local="clr-namespace:TCC.View"
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
              mc:Ignorable="d" 
              xmlns:mvvm="http://www.galasoft.ch/mvvmlight"
              DataContext="{Binding ElementsGrid, Source={StaticResource Locator}}" 
@@ -28,7 +29,7 @@
            
         </ResourceDictionary>
     </UserControl.Resources>
-           <DataGrid ScrollViewer.CanContentScroll="True" MaxHeight="1000" ItemsSource="{Binding Elements}" VerticalScrollBarVisibility="Auto" IsReadOnly="True" SelectionMode="Single" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Name="dataGrid1" AutoGenerateColumns="False"  materialDesign:DataGridAssist.CellPadding="13 8 8 8" materialDesign:DataGridAssist.ColumnHeaderPadding="8">
+           <DataGrid ScrollViewer.CanContentScroll="True" MaxHeight="1000" ItemsSource="{Binding Elements}" VerticalScrollBarVisibility="Auto" IsReadOnly="True" SelectionMode="Extended" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" x:Name="dataGrid1" AutoGenerateColumns="False"  materialDesign:DataGridAssist.CellPadding="13 8 8 8" materialDesign:DataGridAssist.ColumnHeaderPadding="8">
   
                 <DataGrid.Columns>
                 <DataGridTextColumn Header="ID" Binding="{Binding ID}" ></DataGridTextColumn>
@@ -41,12 +42,11 @@
             <DataGridCheckBoxColumn Header="Show Border" Binding="{Binding ShowBorder}" ElementStyle="{StaticResource MaterialDesignDataGridCheckBoxColumnStyle}"></DataGridCheckBoxColumn>
             <DataGridCheckBoxColumn Header="On Top" Binding="{Binding OnTop}" IsReadOnly="True"  ElementStyle="{StaticResource MaterialDesignDataGridCheckBoxColumnStyle}"></DataGridCheckBoxColumn>
             </DataGrid.Columns>
-            <!--<i:Interaction.Triggers>
-                <i:EventTrigger EventName="SelectionChanged">
-                    <mvvm:EventToCommand Command="{Binding ReadAllValuesCommand}" CommandParameter="{Binding ElementName=dataGrid1, Path=SelectedItem}"></mvvm:EventToCommand>
-                    <mvvm:EventToCommand Command="{Binding SendSelectedElementCommand}" CommandParameter="{Binding ElementName=dataGrid1, Path=SelectedItem}"></mvvm:EventToCommand>
-                </i:EventTrigger>
-            </i:Interaction.Triggers>-->
-        </DataGrid>
+        <i:Interaction.Triggers>
+            <i:EventTrigger EventName="SelectionChanged">
+                <mvvm:EventToCommand Command="{Binding SendSelectedElementsCommand}" CommandParameter="{Binding ElementName=dataGrid1, Path=SelectedItems}"></mvvm:EventToCommand>
+            </i:EventTrigger>
+        </i:Interaction.Triggers>
+    </DataGrid>
  
 </UserControl>

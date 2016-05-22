@@ -94,14 +94,16 @@ namespace TCC.ViewModel
                  Elements = task.Result;
                  if (Elements != null)
                  {
-                    Messenger.Default.Send<MessageElementsFromDB>(new MessageElementsFromDB()
+                     Messenger.Default.Send<MessageElementsFromDB>(new MessageElementsFromDB()
                      {
                          ElementsFromDB = Elements
                      });
-                     isConnecting = true;
+                     
                  }
+                 isConnecting = true;
 
              }, TaskContinuationOptions.NotOnFaulted);
+                       
         }
         static Task<ObservableCollection<Element>> ConnectDBTask(int TCID, int SFCS)
         {
@@ -119,6 +121,7 @@ namespace TCC.ViewModel
                     {
                         Exception = ex.Message.ToString()
                     });
+                    
                     return null;
                 }
             });           

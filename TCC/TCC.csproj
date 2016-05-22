@@ -97,9 +97,11 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Helper\sqlWorker.cs" />
+    <Compile Include="MessageInfrastructure\MessageSelectedElements.cs" />
     <Compile Include="MessageInfrastructure\MessageElementsFromDB.cs" />
     <Compile Include="MessageInfrastructure\MessageException.cs" />
     <Compile Include="Model\Element.cs" />
+    <Compile Include="Model\Font.cs" />
     <Compile Include="Model\Settings.cs" />
     <Compile Include="Services\DataAccessService.cs" />
     <Compile Include="Settings1.Designer.cs">

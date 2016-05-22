@@ -2,6 +2,7 @@
 using GalaSoft.MvvmLight.Command;
 using GalaSoft.MvvmLight.Messaging;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -16,14 +17,32 @@ namespace TCC.ViewModel
     public class ElementsGridViewModel : ViewModelBase
     {
         ObservableCollection<Element> _Elements;
+        public RelayCommand<object> SendSelectedElementsCommand { get; set; }
         public ElementsGridViewModel()
         {
             Elements = new ObservableCollection<Element>();
+            
+            SendSelectedElementsCommand = new RelayCommand<object>(SendSelectedElements);
             Messenger.Default.Register<MessageElementsFromDB>(this, (MessageElementsFromDB) =>
             {
                 this.Elements = MessageElementsFromDB.ElementsFromDB;
             });
         }
+
+        void SendSelectedElements(object SelectedElementsDataGrid)
+        {
+            ObservableCollection<Element> SelectedElements = new ObservableCollection<Element>();
+            IList SelectedElementsList = SelectedElementsDataGrid as IList;
+            foreach (Element el in SelectedElementsList)
+            {
+                SelectedElements.Add(el);
+            }
+            Messenger.Default.Send<MessageSelectedElements>(new MessageSelectedElements()
+            {
+                SelectedElements = SelectedElements
+            });
+        }        
+      
 
         public ObservableCollection<Element> Elements
         {

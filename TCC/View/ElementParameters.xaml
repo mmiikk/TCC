@@ -8,32 +8,63 @@
              DataContext="{Binding ElementParameters, Source={StaticResource Locator}}" 
              mc:Ignorable="d" 
             >
-    <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="10*"></ColumnDefinition>
-            <ColumnDefinition Width="10*"></ColumnDefinition>
-            <ColumnDefinition Width="10*"></ColumnDefinition>
-            <ColumnDefinition Width="10*"></ColumnDefinition>
-            <ColumnDefinition Width="10*"></ColumnDefinition>
-            <ColumnDefinition Width="10*"></ColumnDefinition>
-            <ColumnDefinition Width="10*"></ColumnDefinition>
-            <ColumnDefinition Width="10*"></ColumnDefinition>
-            <ColumnDefinition Width="10*"></ColumnDefinition>
-            <ColumnDefinition Width="10*"></ColumnDefinition>
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="auto"></RowDefinition>
-            <RowDefinition Height="auto"></RowDefinition>
-        </Grid.RowDefinitions>
-        <TextBlock Text="Position X" Grid.Column="0" Grid.Row="0"></TextBlock>
-        <TextBlock Text="Position Y" Grid.Column="1" Grid.Row="0"></TextBlock>
-        <TextBlock Text="Width" Grid.Column="2" Grid.Row="0"></TextBlock>
-        <TextBlock Text="Height" Grid.Column="3" Grid.Row="0"></TextBlock>
-        <TextBlock Text="Show Border" Grid.Column="4" Grid.Row="0"></TextBlock>
-        <TextBlock Text="Name" Grid.Column="5" Grid.Row="0"></TextBlock>
-        <TextBlock Text="Show Name" Grid.Column="6" Grid.Row="0"></TextBlock>
-        <TextBlock Text="Position Name" Grid.Column="7" Grid.Row="0"></TextBlock>
-        <TextBlock Text="Picture" Grid.Column="8" Grid.Row="0"></TextBlock>
-        <TextBlock Text="On Top" Grid.Column="9" Grid.Row="0"></TextBlock>
-    </Grid>
+    <UserControl.Resources>
+        <Style TargetType="{x:Type TextBox}" BasedOn="{StaticResource MaterialDesignTextBox}">
+            <Setter Property="Margin" Value="8 0 8 0" />
+        </Style>
+        <Style TargetType="{x:Type CheckBox}" BasedOn="{StaticResource MaterialDesignCheckBox}">
+            <Setter Property="Margin" Value="8 0 8 0" />
+        </Style>
+      
+        <BooleanToVisibilityConverter x:Key="booleanToVisibilityConverter" />
+        
+        <Style TargetType="{x:Type TextBlock}">
+            <Setter Property="FontSize" Value="11"></Setter>
+            <Setter Property="VerticalAlignment" Value="Center"></Setter>
+            <Setter Property="Margin" Value="8 0 8 0" ></Setter>
+            <Setter Property="TextAlignment" Value="Center"></Setter>
+        </Style>
+    </UserControl.Resources>
+    <materialDesign:Card Background="{DynamicResource PrimaryHueDarkBrush}" 
+                  Foreground="{DynamicResource PrimaryHueDarkForegroundBrush}"
+                  Padding="0 8 0 8" UniformCornerRadius="6"  Visibility="{Binding Show,Converter={StaticResource booleanToVisibilityConverter}}">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="10*"></ColumnDefinition>
+                <ColumnDefinition Width="10*"></ColumnDefinition>
+                <ColumnDefinition Width="10*"></ColumnDefinition>
+                <ColumnDefinition Width="10*"></ColumnDefinition>
+                <ColumnDefinition Width="6*"></ColumnDefinition>
+                <ColumnDefinition Width="14*"></ColumnDefinition>
+                <ColumnDefinition Width="10*"></ColumnDefinition>
+                <ColumnDefinition Width="10*"></ColumnDefinition>
+                <ColumnDefinition Width="10*"></ColumnDefinition>
+                <ColumnDefinition Width="10*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition Height="auto"></RowDefinition>
+            </Grid.RowDefinitions>
+            <TextBlock Text="Position X" Grid.Column="0" Grid.Row="0"></TextBlock>
+            <TextBlock Text="Position Y" Grid.Column="1" Grid.Row="0"></TextBlock>
+            <TextBlock Text="Width" Grid.Column="2" Grid.Row="0"></TextBlock>
+            <TextBlock Text="Height" Grid.Column="3" Grid.Row="0"></TextBlock>
+            <TextBlock Text="Show&#x0a;Border" Grid.Column="4" Grid.Row="0"></TextBlock>
+            <TextBlock Text="Name" Grid.Column="5" Grid.Row="0"></TextBlock>
+            <TextBlock Text="Show Name" Grid.Column="6" Grid.Row="0"></TextBlock>
+            <TextBlock Text="Position Name" Grid.Column="7" Grid.Row="0"></TextBlock>
+            <TextBlock Text="Picture" Grid.Column="8" Grid.Row="0"></TextBlock>
+            <TextBlock Text="On Top" Grid.Column="9" Grid.Row="0"></TextBlock>
+
+            <TextBox Name="PositionXTextBox"  Grid.Column="0" Grid.Row="1" Text="{Binding SelectedElement.Position_X}" ></TextBox>
+            <TextBox Name="PositionYTextBox"  Grid.Column="1" Grid.Row="1" Text="{Binding SelectedElement.Position_Y}" ></TextBox>
+            <TextBox Name="WidthTextBox"  Grid.Column="2" Grid.Row="1" Text="{Binding SelectedElement.Width}"></TextBox>
+            <TextBox Name="HeightTextBox"  Grid.Column="3" Grid.Row="1" Text="{Binding SelectedElement.Height}" ></TextBox>
+            <CheckBox Name="ShowBorderCheckBox" Grid.Column="4" Grid.Row="1"  VerticalAlignment="Center" HorizontalAlignment="Center" IsChecked="{Binding SelectedElement.ShowBorder}"></CheckBox>
+            <TextBox Name="NameTextBox"  Grid.Column="5" Grid.Row="1" Text="{Binding SelectedElement.Name}"></TextBox>
+            <CheckBox Name="ShowNameCheckBox" Grid.Column="6" Grid.Row="1"  VerticalAlignment="Center" HorizontalAlignment="Center"  IsChecked="{Binding SelectedElement.ShowName}"></CheckBox>
+            <CheckBox Name="PictureCheckBox" Grid.Column="8" Grid.Row="1"  VerticalAlignment="Center" HorizontalAlignment="Center" ></CheckBox>
+            <CheckBox Name="OnTopCheckBox" Grid.Column="9" Grid.Row="1"  VerticalAlignment="Center" HorizontalAlignment="Center"  IsChecked="{Binding SelectedElement.OnTop}"></CheckBox>
+        </Grid>
+    </materialDesign:Card>
 </UserControl>

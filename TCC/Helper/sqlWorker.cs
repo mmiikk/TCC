@@ -66,7 +66,7 @@ namespace TCC.Helper
                     {
                         Element obj = new Element();
                         obj.ID = (int)row["ID"];
-                        //obj.Station_ID = (byte)row["Station_ID"];
+                        obj.Station_ID = (byte)row["Station_ID"];
                         obj.Position_X = (int)row["Position_X"];
                         obj.Position_Y = (int)row["Position_Y"];
                         obj.Width = (int)row["Width"];
@@ -88,6 +88,24 @@ namespace TCC.Helper
 
                 return ElementsSet;
             
+        }
+
+        public Font loadFont(int StationID, int ID)
+        {
+            DataSet Data = loadData("Select distinct * from " + Settings1.Default.DBName + ".[dbo].[FontsList] where Station_ID = " + StationID + " and ID = " + ID + " order by ID asc");
+            Font font = new Font();
+            foreach (DataRow row in Data.Tables[0].Rows)
+            {
+                font.ID = (int)row["ID"];
+                font.Station_ID = (int)row["Station_ID"];
+                font.Size = (byte)row["Size"];
+                font.Bold = (bool)row["Bold"];
+                font.Italic = (bool)row["Italic"];
+                font.Underline = (bool)row["Underline"];
+                font.CenterAlign = (bool)row["CenterAlign"];
+            }
+
+            return font;
         }
 
     }

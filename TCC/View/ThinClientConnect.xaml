@@ -38,12 +38,12 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="auto" />
         </Grid.RowDefinitions>
-       <Button Grid.Column="0" Grid.Row="0" Style="{StaticResource MaterialDesignRaisedDarkButton}" Margin="8" Command="{Binding Connect}" IsEnabled="{Binding isConnecting}">
+       <Button Grid.Column="0" Grid.Row="0" Style="{StaticResource MaterialDesignRaisedDarkButton}" Margin="0 0 8 0" Command="{Binding Connect}" IsEnabled="{Binding isConnecting}">
             Connect</Button>
        
-        <ComboBox Grid.Row="0" Grid.Column="1" materialDesign:TextFieldAssist.Hint="Thin Client ID" Margin="8" Style="{StaticResource MaterialDesignFloatingHintComboBox}" ItemsSource="{Binding TCIDs}" SelectedIndex="0" SelectedItem="{Binding TCID}"
+        <ComboBox Grid.Row="0" Grid.Column="1" materialDesign:TextFieldAssist.Hint="Thin Client ID" Margin="8 0 8 0" Style="{StaticResource MaterialDesignFloatingHintComboBox}" ItemsSource="{Binding TCIDs}" SelectedIndex="0" SelectedItem="{Binding TCID}"
                   IsEditable="True" materialDesign:TextFieldAssist.HintOpacity=".26"></ComboBox>
-        <ComboBox Grid.Row="0" Grid.Column="2" materialDesign:TextFieldAssist.Hint="SFCS" Margin="8" Style="{StaticResource MaterialDesignFloatingHintComboBox}" ItemsSource="{Binding SFCSs}" SelectedItem="{Binding SFCS}"
+        <ComboBox Grid.Row="0" Grid.Column="2" materialDesign:TextFieldAssist.Hint="SFCS" Margin="8 0 8 0" Style="{StaticResource MaterialDesignFloatingHintComboBox}" ItemsSource="{Binding SFCSs}" SelectedItem="{Binding SFCS}"
                 IsEditable="True" materialDesign:TextFieldAssist.HintOpacity=".26" SelectedIndex="0">
            
             </ComboBox>
