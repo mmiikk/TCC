@@ -17,6 +17,7 @@ namespace TCC.ViewModel
     public class ElementsGridViewModel : ViewModelBase
     {
         ObservableCollection<Element> _Elements;
+       
         public RelayCommand<object> SendSelectedElementsCommand { get; set; }
         public ElementsGridViewModel()
         {
@@ -31,18 +32,29 @@ namespace TCC.ViewModel
 
         void SendSelectedElements(object SelectedElementsDataGrid)
         {
+
+           // RefreshDataFromDB();
             ObservableCollection<Element> SelectedElements = new ObservableCollection<Element>();
             IList SelectedElementsList = SelectedElementsDataGrid as IList;
             foreach (Element el in SelectedElementsList)
             {
                 SelectedElements.Add(el);
             }
+           
+
             Messenger.Default.Send<MessageSelectedElements>(new MessageSelectedElements()
             {
                 SelectedElements = SelectedElements
             });
-        }        
-      
+           
+
+        }
+
+        private void RefreshDataFromDB()
+        {
+            ((ViewModelLocator)App.Current.Resources["Locator"]).ThinClientConnect.ConnectDB();
+        }
+
 
         public ObservableCollection<Element> Elements
         {

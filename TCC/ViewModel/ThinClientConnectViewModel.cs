@@ -85,9 +85,11 @@ namespace TCC.ViewModel
             }
         }
 
-        void ConnectDB()
+
+
+        public void ConnectDB()
         {
-            isConnecting = false; ;
+            isConnecting = false;
             ConnectDBTask(TCID, SFCS).ContinueWith(task =>
              {
                  ObservableCollection<Element> Elements;
@@ -103,7 +105,7 @@ namespace TCC.ViewModel
                  isConnecting = true;
 
              }, TaskContinuationOptions.NotOnFaulted);
-                       
+                 
         }
         static Task<ObservableCollection<Element>> ConnectDBTask(int TCID, int SFCS)
         {

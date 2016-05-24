@@ -9,14 +9,29 @@
              mc:Ignorable="d" 
             >
     <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.ComboBox.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Button.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.CheckBox.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.ListBox.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.PopupBox.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.RadioButton.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.ToggleButton.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+       
         <Style TargetType="{x:Type TextBox}" BasedOn="{StaticResource MaterialDesignTextBox}">
             <Setter Property="Margin" Value="8 0 8 0" />
+            <Setter Property="TextAlignment" Value="Center"></Setter>
         </Style>
         <Style TargetType="{x:Type CheckBox}" BasedOn="{StaticResource MaterialDesignCheckBox}">
             <Setter Property="Margin" Value="8 0 8 0" />
         </Style>
-      
-        <BooleanToVisibilityConverter x:Key="booleanToVisibilityConverter" />
+        <Style TargetType="{x:Type ComboBox}" BasedOn="{StaticResource MaterialDesignComboBox}">
+            <Setter Property="HorizontalAlignment" Value="Stretch" />
+            <Setter Property="Margin" Value="0 8 0 8" />
+        </Style>
+            <BooleanToVisibilityConverter x:Key="booleanToVisibilityConverter" />
         
         <Style TargetType="{x:Type TextBlock}">
             <Setter Property="FontSize" Value="11"></Setter>
@@ -24,24 +39,27 @@
             <Setter Property="Margin" Value="8 0 8 0" ></Setter>
             <Setter Property="TextAlignment" Value="Center"></Setter>
         </Style>
+        </ResourceDictionary>
     </UserControl.Resources>
     <materialDesign:Card Background="{DynamicResource PrimaryHueDarkBrush}" 
                   Foreground="{DynamicResource PrimaryHueDarkForegroundBrush}"
-                  Padding="0 8 0 8" UniformCornerRadius="6"  Visibility="{Binding Show,Converter={StaticResource booleanToVisibilityConverter}}">
+                  Padding="0 8 0 8" UniformCornerRadius="6" Visibility="{Binding Show,Converter={StaticResource booleanToVisibilityConverter}}" >
+        <!--Visibility="{Binding Show,Converter={StaticResource booleanToVisibilityConverter}}"-->
         <Grid>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="10*"></ColumnDefinition>
-                <ColumnDefinition Width="10*"></ColumnDefinition>
-                <ColumnDefinition Width="10*"></ColumnDefinition>
-                <ColumnDefinition Width="10*"></ColumnDefinition>
+                <ColumnDefinition Width="8*"></ColumnDefinition>
+                <ColumnDefinition Width="8*"></ColumnDefinition>
+                <ColumnDefinition Width="8*"></ColumnDefinition>
+                <ColumnDefinition Width="8*"></ColumnDefinition>
                 <ColumnDefinition Width="6*"></ColumnDefinition>
-                <ColumnDefinition Width="14*"></ColumnDefinition>
+                <ColumnDefinition Width="20*"></ColumnDefinition>
                 <ColumnDefinition Width="10*"></ColumnDefinition>
                 <ColumnDefinition Width="10*"></ColumnDefinition>
                 <ColumnDefinition Width="10*"></ColumnDefinition>
                 <ColumnDefinition Width="10*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
+                <RowDefinition Height="auto"></RowDefinition>
                 <RowDefinition Height="auto"></RowDefinition>
                 <RowDefinition Height="auto"></RowDefinition>
             </Grid.RowDefinitions>
@@ -65,6 +83,115 @@
             <CheckBox Name="ShowNameCheckBox" Grid.Column="6" Grid.Row="1"  VerticalAlignment="Center" HorizontalAlignment="Center"  IsChecked="{Binding SelectedElement.ShowName}"></CheckBox>
             <CheckBox Name="PictureCheckBox" Grid.Column="8" Grid.Row="1"  VerticalAlignment="Center" HorizontalAlignment="Center" ></CheckBox>
             <CheckBox Name="OnTopCheckBox" Grid.Column="9" Grid.Row="1"  VerticalAlignment="Center" HorizontalAlignment="Center"  IsChecked="{Binding SelectedElement.OnTop}"></CheckBox>
+
+            <materialDesign:Card  Background="{DynamicResource PrimaryHueLightBrush}"
+                  Foreground="{DynamicResource PrimaryHueLightForegroundBrush}"  Padding="0 8 0 8" UniformCornerRadius="6" Grid.Row="2" Grid.Column="0" Margin="4 4 8 0" Grid.ColumnSpan="7">
+                <Grid Margin="8 0 8 0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto"></ColumnDefinition>
+                        <ColumnDefinition Width="40*"></ColumnDefinition>
+                        <ColumnDefinition Width="10*"></ColumnDefinition>
+                        <ColumnDefinition Width="10*"></ColumnDefinition>
+                        <ColumnDefinition Width="10*"></ColumnDefinition>
+                        <ColumnDefinition Width="40*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"></RowDefinition>
+                        <RowDefinition Height="auto"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <TextBlock Grid.Column="0" Grid.Row="0" Grid.RowSpan="2" Text="Font&#x0a;properties:" TextAlignment="Center" Style="{StaticResource MaterialDesignSubheadingTextBlock}"></TextBlock>
+                    <TextBlock Grid.Column="1" Grid.Row="0" Text="Size" TextAlignment="Center" Margin="8 0 8 0"></TextBlock>
+                    <ComboBox Grid.Column="1" Grid.Row="1" Margin="8 0 8 0"></ComboBox>
+
+                    <Button Grid.Row="0" Grid.Column="2" Grid.RowSpan="2"
+                          Margin="8 0 4 0" 
+                          ToolTip="MaterialDesignFlatPrimaryToggleButton" Command="{Binding TooglePropertyCommand}" CommandParameter="Bold"
+                        >
+                        <TextBlock FontWeight="Bold" FontSize="25" Margin="0 -2 0 0" >B</TextBlock>
+                        <Button.Style>
+                            <Style TargetType="Button" BasedOn="{StaticResource MaterialDesignFloatingActionMiniAccentButton}">
+                                
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding Path=SelectedFont.Bold}"  Value="False">
+                                    <Setter Property="Background" Value="Gray" />
+                                     <Setter Property="BorderBrush" Value="DarkGray" />
+                                    </DataTrigger>
+                            </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+                        
+                    </Button>
+
+                    <Button Grid.Row="0" Grid.Column="3" Grid.RowSpan="2"
+                          Margin="4 0 4 0" 
+                          ToolTip="MaterialDesignFlatPrimaryToggleButton" Command="{Binding TooglePropertyCommand}" CommandParameter="Italic"
+                        >
+                        <TextBlock  FontSize="25" Margin="0 -2 0 0" FontStyle="Italic" >I</TextBlock>
+                        <Button.Style>
+                            <Style TargetType="Button" BasedOn="{StaticResource MaterialDesignFloatingActionMiniAccentButton}">
+
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding Path=SelectedFont.Italic}"  Value="False">
+                                        <Setter Property="Background" Value="Gray" />
+                                        <Setter Property="BorderBrush" Value="DarkGray" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+
+                    </Button>
+
+                    <Button Grid.Row="0" Grid.Column="4" Grid.RowSpan="2"
+                          Margin="4 0 4 0" 
+                          ToolTip="MaterialDesignFlatPrimaryToggleButton" Command="{Binding TooglePropertyCommand}" CommandParameter="Underline"
+                        >
+                        <TextBlock  FontSize="25" Margin="0 -2 0 0" TextDecorations="Underline" >U</TextBlock>
+                        <Button.Style>
+                            <Style TargetType="Button" BasedOn="{StaticResource MaterialDesignFloatingActionMiniAccentButton}">
+
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding Path=SelectedFont.Underline}"  Value="False">
+                                        <Setter Property="Background" Value="Gray" />
+                                        <Setter Property="BorderBrush" Value="DarkGray" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+
+                    </Button>
+
+                    <Button Grid.Row="0" Grid.Column="5" Grid.RowSpan="2"
+                          Margin="4 0 4 0" 
+                          ToolTip="MaterialDesignFlatPrimaryToggleButton" Command="{Binding TooglePropertyCommand}" CommandParameter="CenterAlign"
+                        >
+                        <TextBlock  FontSize="20"  >CENTER</TextBlock>
+                        <Button.Style>
+                            <Style TargetType="Button" BasedOn="{StaticResource MaterialDesignRaisedAccentButton}">
+
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding Path=SelectedFont.CenterAlign}"  Value="False">
+                                        <Setter Property="Background" Value="Gray" />
+                                        <Setter Property="BorderBrush" Value="DarkGray" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+
+                    </Button>
+                    <!--
+                         <ToggleButton.Content>
+                            <TextBlock FontWeight="Bold" FontSize="25" Margin="0 -2 0 0" >B</TextBlock>
+                        </ToggleButton.Content>
+                         <Style.Triggers>
+                                    <DataTrigger Binding="{Binding Path=SelectedFont.Bold}"  Value="True">
+                                        <Setter Property="Background" Value="Lime" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                        -->
+                   
+                   
+                </Grid>
+            </materialDesign:Card>
         </Grid>
     </materialDesign:Card>
 </UserControl>
