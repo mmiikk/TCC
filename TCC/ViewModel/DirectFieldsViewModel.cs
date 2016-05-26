@@ -2,6 +2,7 @@
 using GalaSoft.MvvmLight.Messaging;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
@@ -11,21 +12,45 @@ using TCC.Model;
 
 namespace TCC.ViewModel
 {
-    public class StaticValuesTextViewModel : ViewModelBase
+    public class DirectFieldsViewModel : ViewModelBase
     {
-        string _StaticText = "";
-        int _Type = 0;
         private Value _Val { get; set; }
-
-        public StaticValuesTextViewModel()
+        private ObservableCollection<PLC> _PLCs { get; set; }
+        private PLC _SelectedPLC { get; set; }
+        public DirectFieldsViewModel()
         {
             Val = new Value();
+            PLCs = new ObservableCollection<PLC>();
+            SelectedPLC = new PLC();
             Messenger.Default.Register<MessageStaticValue>(this, (MessageStaticValue) =>
             {
                 this.Val = MessageStaticValue.Val;
-                this.StaticText = MessageStaticValue.Val.Val;
-                this.Type = MessageStaticValue.Val.ID;
+                
             });
+            Messenger.Default.Register<MessagePLCs>(this, (MessagePLCs) =>
+            {
+                this.PLCs = MessagePLCs.PLCs;
+            });
+        }
+
+        public ObservableCollection<PLC> PLCs
+        {
+            get { return _PLCs; }
+            set
+            {
+                _PLCs = value;
+                RaisePropertyChanged("PLCs");
+            }
+        }
+
+        public PLC SelectedPLC
+        {
+            get { return _SelectedPLC; }
+            set
+            {
+                _SelectedPLC = value;
+                RaisePropertyChanged("SelectedPLC");
+            }
         }
 
         public Value Val
@@ -35,26 +60,6 @@ namespace TCC.ViewModel
             {
                 _Val = value;
                 RaisePropertyChanged("Val");
-            }
-        }
-
-        public string StaticText
-        {
-            get { return _StaticText; }
-            set
-            {
-                _StaticText = value;
-                RaisePropertyChanged("StaticText");
-            }
-        }
-
-        public int Type
-        {
-            get { return _Type; }
-            set
-            {
-                _Type = value;
-                RaisePropertyChanged("Type");
             }
         }
 

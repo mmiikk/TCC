@@ -1,0 +1,162 @@
+﻿<UserControl x:Class="TCC.View.DirectFields"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:TCC.View"
+              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:conv="clr-namespace:TCC.Helper"
+             mc:Ignorable="d" 
+               DataContext="{Binding DirectFields, Source={StaticResource Locator}}" 
+             >
+
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.ListBox.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.TextBlock.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Button.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.CheckBox.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.TextBox.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.ComboBox.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.RadioButton.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.ToggleButton.xaml" />
+                
+            </ResourceDictionary.MergedDictionaries>
+            <conv:VisibilityDirectConverter x:Key="VisibilityDirectConverter"></conv:VisibilityDirectConverter>
+            <conv:VisibilityValues x:Key="VisibilityValues"></conv:VisibilityValues>
+            <Style TargetType="{x:Type ListBox}" BasedOn="{StaticResource MaterialDesignListBox}">
+                <Setter Property="Margin" Value="8 0 8 0" />
+
+            </Style>
+            <Style TargetType="{x:Type TextBox}" BasedOn="{StaticResource MaterialDesignTextBox}">
+            </Style>
+
+            <Style TargetType="{x:Type TextBlock}" >
+                <Setter Property="FontSize" Value="11"></Setter>
+                <Setter Property="VerticalAlignment" Value="Center"></Setter>
+                <Setter Property="Margin" Value="8 0 8 0" ></Setter>
+                <Setter Property="TextAlignment" Value="Center"></Setter>
+            </Style>
+            
+          
+
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <Grid  Visibility="{Binding Path=Val, Converter={StaticResource VisibilityDirectConverter}}" Margin="0 8 0 0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="10*"></RowDefinition>
+            <RowDefinition Height="90*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="15*"></ColumnDefinition>
+            <ColumnDefinition Width="15*"></ColumnDefinition>
+            <ColumnDefinition Width="15*"></ColumnDefinition>
+            <ColumnDefinition Width="15*"></ColumnDefinition>
+            <ColumnDefinition Width="15*"></ColumnDefinition>
+            <ColumnDefinition Width="25*"></ColumnDefinition>
+
+        </Grid.ColumnDefinitions>
+        <Button Grid.Column="0" Grid.Row="0" >Bit
+            <Button.Style>
+                <Style TargetType="Button" BasedOn="{StaticResource MaterialDesignRaisedAccentButton}">
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Path=Val, Converter={StaticResource VisibilityValues}, ConverterParameter='Bit'}"  Value="False">
+                            <Setter Property="Background" Value="Gray" />
+                            <Setter Property="BorderBrush" Value="DarkGray" />
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
+        <Button Grid.Column="1" Grid.Row="0" Margin="8 0 0 0">Int
+            <Button.Style>
+                <Style TargetType="Button" BasedOn="{StaticResource MaterialDesignRaisedAccentButton}">
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Path=Val, Converter={StaticResource VisibilityValues}, ConverterParameter='Int'}"  Value="False">
+                            <Setter Property="Background" Value="Gray" />
+                            <Setter Property="BorderBrush" Value="DarkGray" />
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
+        <Button Grid.Column="2" Grid.Row="0" Margin="8 0 0 0" >Real
+            <Button.Style>
+                <Style TargetType="Button" BasedOn="{StaticResource MaterialDesignRaisedAccentButton}">
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Path=Val, Converter={StaticResource VisibilityValues}, ConverterParameter='Real'}"  Value="False">
+                            <Setter Property="Background" Value="Gray" />
+                            <Setter Property="BorderBrush" Value="DarkGray" />
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
+        <Button Grid.Column="3" Grid.Row="0" Margin="8 0 0 0" >String
+            <Button.Style>
+                <Style TargetType="Button" BasedOn="{StaticResource MaterialDesignRaisedAccentButton}">
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Path=Val, Converter={StaticResource VisibilityValues}, ConverterParameter='String'}"  Value="False">
+                            <Setter Property="Background" Value="Gray" />
+                            <Setter Property="BorderBrush" Value="DarkGray" />
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
+        <Button Grid.Column="4" Grid.Row="0"  Margin="8 0 0 0">Byte
+            <Button.Style>
+                <Style TargetType="Button" BasedOn="{StaticResource MaterialDesignRaisedAccentButton}">
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Path=Val, Converter={StaticResource VisibilityValues}, ConverterParameter='Byte'}"  Value="False">
+                            <Setter Property="Background" Value="Gray" />
+                            <Setter Property="BorderBrush" Value="DarkGray" />
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
+
+        <materialDesign:Card  Padding="0 8 0 8" UniformCornerRadius="6" Grid.Row="1" Grid.Column="0" Margin="0 4 0 0" Grid.ColumnSpan="6"
+                               Background="{DynamicResource PrimaryHueLightBrush}"
+                  Foreground="{DynamicResource PrimaryHueLightForegroundBrush}">
+            <Grid  Visibility="{Binding Path=Val, Converter={StaticResource VisibilityDirectConverter}}">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50*"></RowDefinition>
+                    <RowDefinition Height="50*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="15*"></ColumnDefinition>
+                    <ColumnDefinition Width="15*"></ColumnDefinition>
+                    <ColumnDefinition Width="30*"></ColumnDefinition>
+                    <ColumnDefinition Width="10*"></ColumnDefinition>
+                    <ColumnDefinition Width="10*"></ColumnDefinition>
+                    <ColumnDefinition Width="10*"></ColumnDefinition>
+                    <ColumnDefinition Width="10*"></ColumnDefinition>
+                    <ColumnDefinition Width="10*"></ColumnDefinition>
+                    <ColumnDefinition Width="10*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Text="Start Byte" Grid.Column="0" Grid.Row="0" Margin="8 0 8 0"></TextBlock>
+                <TextBlock Text="Length" Grid.Column="1" Grid.Row="0" Margin="8 0 8 0"></TextBlock>
+                <TextBlock Text="DB Station" Grid.Column="3" Grid.Row="0" Grid.ColumnSpan="2" Margin="8 0 8 0"></TextBlock>
+                <TextBlock Text="DB Panel" Grid.Column="5" Grid.Row="0"  Grid.ColumnSpan="2" Margin="8 0 8 0"></TextBlock>
+                <TextBlock Text="DB Manual" Grid.Column="7" Grid.Row="0"  Grid.ColumnSpan="2" Margin="8 0 8 0"></TextBlock>
+
+                <TextBox Grid.Column="0" Grid.Row="1" Text="{Binding Val.StartByte}" TextAlignment="Center" Margin="8 0 8 0"></TextBox>
+                <TextBox Grid.Column="1" Grid.Row="1" Text="{Binding Val.Length}" TextAlignment="Center" Margin="8 0 8 0"></TextBox>
+                <ToggleButton Style="{StaticResource MaterialDesignSwitchToggleButton}" VerticalAlignment="Center" Margin="8 0 0 0" Grid.Column="3" Grid.Row="1" HorizontalAlignment="Center"
+                       IsChecked="{Binding Val.DBStation}"       />
+                <TextBox Grid.Column="4" Grid.Row="1" Text="{Binding Val.Length}" TextAlignment="Center" Margin="8 0 8 0"></TextBox>
+                <ToggleButton Style="{StaticResource MaterialDesignSwitchToggleButton}" VerticalAlignment="Center" Margin="8 0 0 0" Grid.Column="5" Grid.Row="1" HorizontalAlignment="Center"
+                   IsChecked="{Binding Val.DBPanel}"         />
+                <ToggleButton Style="{StaticResource MaterialDesignSwitchToggleButton}" VerticalAlignment="Center" Margin="8 0 0 0" Grid.Column="7" Grid.Row="1" HorizontalAlignment="Center"
+                      IsChecked="{Binding Val.DBManual}"     />
+
+                <ComboBox Grid.Row="0" Grid.Column="2"  Margin="8 0 8 0" Grid.RowSpan="2" materialDesign:TextFieldAssist.Hint="PLC"  Style="{StaticResource MaterialDesignFloatingHintComboBox}"  ItemsSource="{Binding PLCs}" DisplayMemberPath="Name" SelectedIndex="0" SelectedItem="{Binding SelectedPLC}"
+                  IsEditable="False" materialDesign:TextFieldAssist.HintOpacity=".26"></ComboBox>
+            </Grid>
+        </materialDesign:Card>
+    </Grid>
+</UserControl>

@@ -24,7 +24,7 @@
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.ToggleButton.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Slider.xaml" />
             </ResourceDictionary.MergedDictionaries>
-            <conv:VisibilityConverter x:Key="VisibilityConverter" />
+            <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
             <Style TargetType="{x:Type ListBox}" BasedOn="{StaticResource MaterialDesignListBox}">
                 <Setter Property="Margin" Value="8 0 8 0" />
                 
@@ -48,8 +48,8 @@
         </ResourceDictionary>
     </UserControl.Resources>
     <Grid Margin="8" >
-        
-        <materialDesign:Card  Background="{DynamicResource PrimaryHueDarkBrush}"  Visibility="{Binding Path=Show, Converter={StaticResource VisibilityConverter}}"
+
+        <materialDesign:Card  Background="{DynamicResource PrimaryHueDarkBrush}"  Visibility="{Binding Path=Show, Converter={StaticResource BooleanToVisibilityConverter}}"
                   Foreground="{DynamicResource PrimaryHueDarkForegroundBrush}"  Padding="8">
     <Grid>
         <Grid.ColumnDefinitions>

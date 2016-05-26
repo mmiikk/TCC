@@ -99,7 +99,10 @@
     <Compile Include="Helper\isNotConverter.cs" />
     <Compile Include="Helper\RGBConverter.cs" />
     <Compile Include="Helper\sqlWorker.cs" />
-    <Compile Include="Helper\VisibilityConverter.cs" />
+    <Compile Include="Helper\VisibilityDirectConverter.cs" />
+    <Compile Include="Helper\VisibilityStaticConverter.cs" />
+    <Compile Include="Helper\VisibilityValues.cs" />
+    <Compile Include="MessageInfrastructure\MessagePLCs.cs" />
     <Compile Include="MessageInfrastructure\MessageSelectedElements.cs" />
     <Compile Include="MessageInfrastructure\MessageElementsFromDB.cs" />
     <Compile Include="MessageInfrastructure\MessageException.cs" />
@@ -117,6 +120,7 @@
       <DependentUpon>Settings1.settings</DependentUpon>
     </Compile>
     <Compile Include="ViewModel\ColorPickerViewModel.cs" />
+    <Compile Include="ViewModel\DirectFieldsViewModel.cs" />
     <Compile Include="ViewModel\ElementParametersViewModel.cs" />
     <Compile Include="ViewModel\ElementsGridViewModel.cs" />
     <Compile Include="ViewModel\ElementValuesViewModel.cs" />
@@ -130,6 +134,9 @@
     </Compile>
     <Compile Include="View\Configurator.xaml.cs">
       <DependentUpon>Configurator.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\DirectFields.xaml.cs">
+      <DependentUpon>DirectFields.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\ElementParameters.xaml.cs">
       <DependentUpon>ElementParameters.xaml</DependentUpon>
@@ -174,6 +181,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Configurator.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\DirectFields.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -14,7 +14,7 @@ using TCC.Services;
 
 namespace TCC.ViewModel
 {
-    public class ElementValuesViewModel : ViewModelBase, INotifyPropertyChanged
+    public class ElementValuesViewModel : ViewModelBase
 
     {
         ObservableCollection<Value> _Values;
@@ -31,6 +31,7 @@ namespace TCC.ViewModel
 
         ObservableCollection<Element> SelectedElements;
         public RelayCommand<Value> SetActiveValueCommand { get; set; }
+        public RelayCommand<string> SetActiveValueButtonCommand { get; set; }
         public ElementValuesViewModel()
         {
             Values = new ObservableCollection<Value>();
@@ -41,6 +42,7 @@ namespace TCC.ViewModel
             Visibility = new Value();
             SelectedElements = new ObservableCollection<Element>();
             SetActiveValueCommand = new RelayCommand<Value>(SetActiveValue);
+            SetActiveValueButtonCommand = new RelayCommand<string>(SetActiveValueButton);
             CurrentValue = new Value();
             
             DirectVisibility = false;
@@ -79,6 +81,34 @@ namespace TCC.ViewModel
             });
         }
 
+        void SetActiveValueButton(string type)
+        {
+            Value nVal = new Value();
+            nVal = CurrentValue;
+
+            if (type == "Static")
+            {
+                nVal.Mask_ID = 0;
+                nVal.TypeVisibility = "Static";
+            }
+
+            if (type == "Mask")
+            {
+                nVal.Mask_ID = nVal.ID;
+                nVal.TypeVisibility = "Mask";
+            }
+
+            if (type == "Direct")
+            {
+                nVal.Mask_ID = 0;
+                nVal.TypeVisibility = "Direct";
+            }
+
+            CurrentValue = nVal;
+
+            SendStaticValue();
+        }
+
         void SetActiveValue(Value val)
         {
             ValueID.Selected = false;
@@ -105,15 +135,19 @@ namespace TCC.ViewModel
 
             CurrentValue = val;
 
-           
-            Messenger.Default.Send<MessageStaticValue>(new MessageStaticValue()
-            {
-                Val = this.CurrentValue,
-                Type = val.ID
-            });
+            SendStaticValue();
+
 
         }
 
+        void SendStaticValue()
+        {
+            Messenger.Default.Send<MessageStaticValue>(new MessageStaticValue()
+            {
+                Val = this.CurrentValue,
+                Type = this.CurrentValue.ID
+            });
+        }
      
 
         public ObservableCollection<Value> Values

@@ -105,7 +105,24 @@ namespace TCC.ViewModel
                  isConnecting = true;
 
              }, TaskContinuationOptions.NotOnFaulted);
-                 
+
+
+             LoadPLC().ContinueWith( task =>
+             {
+                 ObservableCollection<PLC> PLCs;
+                 PLCs = task.Result;
+                 if (PLCs != null)
+                 {
+                     Messenger.Default.Send<MessagePLCs>(new MessagePLCs()
+                     {
+                          PLCs = PLCs
+                     });
+
+                 }
+                 isConnecting = true;
+
+             }, TaskContinuationOptions.NotOnFaulted);
+
         }
         static Task<ObservableCollection<Element>> ConnectDBTask(int TCID, int SFCS)
         {
@@ -127,6 +144,28 @@ namespace TCC.ViewModel
                     return null;
                 }
             });           
+        }
+
+        static Task<ObservableCollection<PLC>> LoadPLC()
+        {
+            ObservableCollection<PLC> Elements;
+
+            return Task<ObservableCollection<PLC>>.Factory.StartNew(() =>
+            {
+                try
+                {
+                    return Elements = DataAccessService.Instance.GetAllPLCs();
+                }
+                catch (Exception ex)
+                {
+                    Messenger.Default.Send<MessageException>(new MessageException()
+                    {
+                        Exception = ex.Message.ToString()
+                    });
+
+                    return null;
+                }
+            });
         }
 
 

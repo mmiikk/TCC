@@ -10,6 +10,7 @@ namespace TCC.Model
     public class Value : INotifyPropertyChanged
     {
         public int ID { get; set; }
+        public int _Station_ID { get; set; }
         private string _Type = String.Empty;
         public int DB { get; set; }
         public int StartByte { get; set; }
@@ -71,6 +72,16 @@ namespace TCC.Model
             }
         }
 
+        public int Station_ID
+        {
+            get { return _Station_ID; }
+            set
+            {
+                _Station_ID = value;
+                OnPropertyChanged("Station_ID");
+            }
+        }
+
         public int Mask_ID
         {
             get { return _Mask_ID; }
@@ -97,12 +108,12 @@ namespace TCC.Model
                         DBPanel = false;
                         DBManual = false;
                         break;
-                    case 2:
+                    case 0:
                         DBStation = false;
                         DBPanel = true;
                         DBManual = false;
                         break;
-                    case 3:
+                    case 2:
                         DBStation = false;
                         DBPanel = false;
                         DBManual = true;

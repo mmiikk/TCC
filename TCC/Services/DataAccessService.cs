@@ -13,6 +13,8 @@ namespace TCC.Services
     {
         ObservableCollection<Element> GetAllElements(int StationID);
         ObservableCollection<Value> GetAllValues(int ElementID, int StationID);
+
+        ObservableCollection<PLC> GetAllPLCs();
         Font GetFont(int StationID, int ElementID);
     }
     class DataAccessService : IDataAccessService
@@ -117,6 +119,19 @@ namespace TCC.Services
             return font;
         }
 
+        public ObservableCollection<PLC> GetAllPLCs()
+        {
+            ObservableCollection<PLC> plcs = new ObservableCollection<PLC>();
+            try
+            {
+                plcs = sql.loadPLCs();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return plcs;
+        }
 
     }
 }

@@ -104,7 +104,7 @@ namespace TCC.Helper
             {
                 Value obj = new Value();
                 obj.ID = (int)row["ID"];
-                //obj.Station_ID = (byte)row["Station_ID"];
+                obj.Station_ID = (int)row["Station_ID"];
                 obj.Type = (string)row["Type"];
                 obj.DB = (int)row["DB"];
                 obj.StartByte = (int)row["StartByte"];
@@ -137,6 +137,22 @@ namespace TCC.Helper
             }
 
             return font;
+        }
+
+        public ObservableCollection<PLC> loadPLCs()
+        {
+            ObservableCollection<PLC> PLCSet = new ObservableCollection<PLC>();
+            DataSet Data = loadData("Select distinct * from " + Settings1.Default.DBName + ".[dbo].[PLC] order by ID asc");
+           
+            foreach (DataRow row in Data.Tables[0].Rows)
+            {
+                PLC plc = new PLC();
+                plc.ID = (int)row["ID"];
+                plc.Name = (string)row["Name"];
+                PLCSet.Add(plc);
+            }
+
+            return PLCSet;
         }
 
     }

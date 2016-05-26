@@ -6,21 +6,28 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Data;
+using TCC.Model;
 
 namespace TCC.Helper
 {
-    class VisibilityConverter : IValueConverter
+    class VisibilityStaticConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            if ((bool)value == true)
+            Value val = value as Value;
+
+            if (val != null)
             {
-                return Visibility.Visible;
+                if (val.TypeVisibility == "Static" && (val.ID >= 1 && val.ID < 3000))
+                {
+                    return Visibility.Visible;
+                }
+                else
+                {
+                    return Visibility.Collapsed;
+                }
             }
-            else
-            {
-                return Visibility.Collapsed;
-            }
+            return Visibility.Collapsed;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
