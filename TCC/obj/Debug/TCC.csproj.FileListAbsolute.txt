@@ -52,6 +52,8 @@ C:\Users\Mateusz\Documents\GitHub\TCC\TCC\TCC\obj\Debug\TCC.Properties.Resources
 C:\Users\Mateusz\Documents\GitHub\TCC\TCC\TCC\obj\Debug\TCC.csproj.GenerateResource.Cache
 C:\Users\Mateusz\Documents\GitHub\TCC\TCC\TCC\obj\Debug\View\StaticValueText.g.cs
 C:\Users\Mateusz\Documents\GitHub\TCC\TCC\TCC\obj\Debug\View\StaticValueText.baml
+C:\Users\Mateusz\Documents\GitHub\TCC\TCC\TCC\obj\Debug\View\ColorPicker.g.cs
+C:\Users\Mateusz\Documents\GitHub\TCC\TCC\TCC\obj\Debug\View\ColorPicker.baml
 C:\Users\Admin\Documents\GitHub\TCC\TCC\bin\Debug\TCC.exe.config
 C:\Users\Admin\Documents\GitHub\TCC\TCC\bin\Debug\TCC.exe
 C:\Users\Admin\Documents\GitHub\TCC\TCC\bin\Debug\TCC.pdb
@@ -82,6 +84,7 @@ C:\Users\Admin\Documents\GitHub\TCC\TCC\obj\Debug\Resources\IconsNonShared.baml
 C:\Users\Admin\Documents\GitHub\TCC\TCC\obj\Debug\MainWindow.g.cs
 C:\Users\Admin\Documents\GitHub\TCC\TCC\obj\Debug\View\ColorPicker.g.cs
 C:\Users\Admin\Documents\GitHub\TCC\TCC\obj\Debug\View\Configurator.g.cs
+C:\Users\Admin\Documents\GitHub\TCC\TCC\obj\Debug\View\DirectFields.g.cs
 C:\Users\Admin\Documents\GitHub\TCC\TCC\obj\Debug\View\ElementParameters.g.cs
 C:\Users\Admin\Documents\GitHub\TCC\TCC\obj\Debug\View\ElementsGrid.g.cs
 C:\Users\Admin\Documents\GitHub\TCC\TCC\obj\Debug\View\ElementValues.g.cs
@@ -96,6 +99,7 @@ C:\Users\Admin\Documents\GitHub\TCC\TCC\obj\Debug\App.baml
 C:\Users\Admin\Documents\GitHub\TCC\TCC\obj\Debug\MainWindow.baml
 C:\Users\Admin\Documents\GitHub\TCC\TCC\obj\Debug\View\ColorPicker.baml
 C:\Users\Admin\Documents\GitHub\TCC\TCC\obj\Debug\View\Configurator.baml
+C:\Users\Admin\Documents\GitHub\TCC\TCC\obj\Debug\View\DirectFields.baml
 C:\Users\Admin\Documents\GitHub\TCC\TCC\obj\Debug\View\ElementParameters.baml
 C:\Users\Admin\Documents\GitHub\TCC\TCC\obj\Debug\View\ElementsGrid.baml
 C:\Users\Admin\Documents\GitHub\TCC\TCC\obj\Debug\View\ElementValues.baml
@@ -107,8 +111,4 @@ C:\Users\Admin\Documents\GitHub\TCC\TCC\obj\Debug\TCC.Properties.Resources.resou
 C:\Users\Admin\Documents\GitHub\TCC\TCC\obj\Debug\TCC.csproj.GenerateResource.Cache
 C:\Users\Admin\Documents\GitHub\TCC\TCC\obj\Debug\TCC.exe
 C:\Users\Admin\Documents\GitHub\TCC\TCC\obj\Debug\TCC.pdb
-C:\Users\Mateusz\Documents\GitHub\TCC\TCC\TCC\obj\Debug\View\ColorPicker.g.cs
-C:\Users\Mateusz\Documents\GitHub\TCC\TCC\TCC\obj\Debug\View\ColorPicker.baml
-C:\Users\Admin\Documents\GitHub\TCC\TCC\obj\Debug\View\DirectFields.g.cs
-C:\Users\Admin\Documents\GitHub\TCC\TCC\obj\Debug\View\DirectFields.baml
 C:\Users\Admin\Documents\GitHub\TCC\TCC\obj\Debug\TCC.csprojResolveAssemblyReference.cache

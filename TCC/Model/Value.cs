@@ -12,9 +12,9 @@ namespace TCC.Model
         public int ID { get; set; }
         public int _Station_ID { get; set; }
         private string _Type = String.Empty;
-        public int DB { get; set; }
-        public int StartByte { get; set; }
-        public int Length { get; set; }
+        private int _DB { get; set; }
+        private int _StartByte { get; set; }
+        private int _Length { get; set; }
         private string _Val = String.Empty;
         private int _Mask_ID = 0;
         private int _DBType { get; set; }
@@ -69,6 +69,36 @@ namespace TCC.Model
                 _Val = value;
                 // Call OnPropertyChanged whenever the property is updated
                 OnPropertyChanged("Val");
+            }
+        }
+
+        public int DB
+        {
+            get { return _DB; }
+            set
+            {
+                _DB = value;
+                OnPropertyChanged("DB");
+            }
+        }
+
+        public int Length
+        {
+            get { return _Length; }
+            set
+            {
+                _Length  = value;
+                OnPropertyChanged("Length");
+            }
+        }
+
+        public int StartByte
+        {
+            get { return _StartByte; }
+            set
+            {
+                _StartByte = value;
+                OnPropertyChanged("StartByte");
             }
         }
 

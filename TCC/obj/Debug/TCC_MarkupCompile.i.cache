@@ -16,5 +16,5 @@ C:\Users\Admin\Documents\GitHub\TCC\TCC\App.xaml
 751684229758
 MainWindow.xaml;Resources\Icons.xaml;Resources\IconsNonShared.xaml;View\ColorPicker.xaml;View\Configurator.xaml;View\DirectFields.xaml;View\ElementParameters.xaml;View\ElementsGrid.xaml;View\ElementValues.xaml;View\Settings.xaml;View\StaticValueText.xaml;View\ThinClientConnect.xaml;
 
-True
+False
 
