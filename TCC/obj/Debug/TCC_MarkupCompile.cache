@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\Mateusz\Documents\GitHub\TCC\TCC\TCC\obj\Debug\
+C:\Users\Admin\Documents\GitHub\TCC\TCC\obj\Debug\
 TCC
 none
 false
 DEBUG;TRACE
-C:\Users\Mateusz\Documents\GitHub\TCC\TCC\TCC\App.xaml
-10-651951262
+C:\Users\Admin\Documents\GitHub\TCC\TCC\App.xaml
+11-42756424
 
-33-846064124
-75-1507325578
-MainWindow.xaml;Resources\Icons.xaml;Resources\IconsNonShared.xaml;View\Configurator.xaml;View\ElementParameters.xaml;View\ElementsGrid.xaml;View\ElementValues.xaml;View\Settings.xaml;View\StaticValueText.xaml;View\ThinClientConnect.xaml;
+37-562608240
+751684229758
+MainWindow.xaml;Resources\Icons.xaml;Resources\IconsNonShared.xaml;View\ColorPicker.xaml;View\Configurator.xaml;View\ElementParameters.xaml;View\ElementsGrid.xaml;View\ElementValues.xaml;View\Settings.xaml;View\StaticValueText.xaml;View\ThinClientConnect.xaml;
 
 False
 

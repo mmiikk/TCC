@@ -50,6 +50,7 @@ namespace TCC.ViewModel
             SimpleIoc.Default.Register<ElementParametersViewModel>();
             SimpleIoc.Default.Register<ElementValuesViewModel>();
             SimpleIoc.Default.Register<StaticValuesTextViewModel>();
+            SimpleIoc.Default.Register<ColorPickerViewModel>();
         }
 
         public MainViewModel Main
@@ -104,6 +105,14 @@ namespace TCC.ViewModel
             get
             {
                 return ServiceLocator.Current.GetInstance<StaticValuesTextViewModel>();
+            }
+        }
+
+        public ColorPickerViewModel ColorPicker
+        {
+            get
+            {
+                return ServiceLocator.Current.GetInstance<ColorPickerViewModel>();
             }
         }
 

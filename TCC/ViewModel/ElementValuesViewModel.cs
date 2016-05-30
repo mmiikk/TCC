@@ -4,6 +4,7 @@ using GalaSoft.MvvmLight.Messaging;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,7 +14,8 @@ using TCC.Services;
 
 namespace TCC.ViewModel
 {
-    public class ElementValuesViewModel : ViewModelBase
+    public class ElementValuesViewModel : ViewModelBase, INotifyPropertyChanged
+
     {
         ObservableCollection<Value> _Values;
         Value _ValueID;

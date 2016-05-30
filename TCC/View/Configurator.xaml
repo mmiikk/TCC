@@ -25,6 +25,6 @@
         <local:ElementsGrid Grid.Row="1" Grid.Column="2" Margin="8 0 8 8"/>
         <GridSplitter Grid.Column="2" Grid.Row="2" ResizeDirection="Rows" Width="Auto" Height="auto" HorizontalAlignment="Stretch" Margin="0" Name="GridSplitter2" />
         <local:ElementParameters Grid.Row="3" Grid.Column="2" Margin="8" />
-       
+        <local:ColorPicker Grid.Row="3" Grid.Column="0" />
     </Grid>
 </UserControl>
