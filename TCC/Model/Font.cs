@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace TCC.Model
 {
-    public class Font
+    public class Font : INotifyPropertyChanged
     {
         private int _ID { get; set; }
         private int _Station_ID { get; set; }

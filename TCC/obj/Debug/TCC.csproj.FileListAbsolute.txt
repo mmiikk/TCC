@@ -23,7 +23,6 @@ C:\Users\Admin\Documents\GitHub\TCC\TCC\bin\Debug\MahApps.Metro.pdb
 C:\Users\Admin\Documents\GitHub\TCC\TCC\bin\Debug\MahApps.Metro.xml
 C:\Users\Admin\Documents\GitHub\TCC\TCC\bin\Debug\Microsoft.Practices.ServiceLocation.pdb
 C:\Users\Admin\Documents\GitHub\TCC\TCC\bin\Debug\Microsoft.Practices.ServiceLocation.xml
-C:\Users\Admin\Documents\GitHub\TCC\TCC\obj\Debug\TCC.csprojResolveAssemblyReference.cache
 C:\Users\Admin\Documents\GitHub\TCC\TCC\obj\Debug\Resources\Icons.baml
 C:\Users\Admin\Documents\GitHub\TCC\TCC\obj\Debug\Resources\IconsNonShared.baml
 C:\Users\Admin\Documents\GitHub\TCC\TCC\obj\Debug\View\ElementParameters.baml
@@ -48,3 +47,5 @@ C:\Users\Admin\Documents\GitHub\TCC\TCC\obj\Debug\TCC.Properties.Resources.resou
 C:\Users\Admin\Documents\GitHub\TCC\TCC\obj\Debug\TCC.csproj.GenerateResource.Cache
 C:\Users\Admin\Documents\GitHub\TCC\TCC\obj\Debug\TCC.exe
 C:\Users\Admin\Documents\GitHub\TCC\TCC\obj\Debug\TCC.pdb
+C:\Users\Admin\Documents\GitHub\TCC\TCC\obj\Debug\View\ElementValues.g.cs
+C:\Users\Admin\Documents\GitHub\TCC\TCC\obj\Debug\View\ElementValues.baml

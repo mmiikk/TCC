@@ -48,6 +48,7 @@ namespace TCC.ViewModel
             SimpleIoc.Default.Register<ThinClientConnectViewModel>();
             SimpleIoc.Default.Register<ElementsGridViewModel>();
             SimpleIoc.Default.Register<ElementParametersViewModel>();
+            SimpleIoc.Default.Register<ElementValuesViewModel>();
         }
 
         public MainViewModel Main
@@ -86,6 +87,14 @@ namespace TCC.ViewModel
             get
             {
                 return ServiceLocator.Current.GetInstance<ElementsGridViewModel>();
+            }
+        }
+
+        public ElementValuesViewModel ElementValues
+        {
+            get
+            {
+                return ServiceLocator.Current.GetInstance<ElementValuesViewModel>();
             }
         }
 

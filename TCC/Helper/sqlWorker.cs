@@ -90,6 +90,37 @@ namespace TCC.Helper
             
         }
 
+        public ObservableCollection<Value> loadValuesAsObservableCollection(int StationID, int ID)
+        {
+            ObservableCollection<Value> ValuesSet = new ObservableCollection<Value>();
+            string query = String.Format("Select v.*, p.Name from {0}.[dbo].[Values] v, {0}.[dbo].[PLC] p where v.Station_ID = {2} and v.ID in ( {1}, (select {1}+1000), (select {1}+2000), (select {1}+3000), (select {1}+4000), (select {1}+5000) ) and v.PLC_ID = p.ID order by ID asc",
+                Settings1.Default.DBName,
+                ID,
+                StationID
+
+                );
+            DataSet Data = loadData(query);
+            foreach (DataRow row in Data.Tables[0].Rows)
+            {
+                Value obj = new Value();
+                obj.ID = (int)row["ID"];
+                //obj.Station_ID = (byte)row["Station_ID"];
+                obj.Type = (string)row["Type"];
+                obj.DB = (int)row["DB"];
+                obj.StartByte = (int)row["StartByte"];
+                obj.Length = (int)row["Length"];
+                obj.Val = (string)row["Value"];
+                obj.Mask_ID = (int)row["Mask_ID"];
+                obj.DBType = (int)row["DBType"];
+                obj.oPLC.ID = (int)row["PLC_ID"];
+                obj.oPLC.Name = (string)row["Name"];
+
+                ValuesSet.Add(obj);
+            }
+
+            return ValuesSet;
+        }
+
         public Font loadFont(int StationID, int ID)
         {
             DataSet Data = loadData("Select distinct * from " + Settings1.Default.DBName + ".[dbo].[FontsList] where Station_ID = " + StationID + " and ID = " + ID + " order by ID asc");

@@ -29,7 +29,7 @@
            
         </ResourceDictionary>
     </UserControl.Resources>
-           <DataGrid ScrollViewer.CanContentScroll="True" MaxHeight="1000" ItemsSource="{Binding Elements}" VerticalScrollBarVisibility="Auto" IsReadOnly="True" SelectionMode="Extended" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" x:Name="dataGrid1" AutoGenerateColumns="False"  materialDesign:DataGridAssist.CellPadding="13 8 8 8" materialDesign:DataGridAssist.ColumnHeaderPadding="8">
+           <DataGrid ScrollViewer.CanContentScroll="True" IsReadOnly="True" MaxHeight="1000" ItemsSource="{Binding Elements}" VerticalScrollBarVisibility="Auto" SelectionMode="Extended" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" x:Name="dataGrid1" AutoGenerateColumns="False"  materialDesign:DataGridAssist.CellPadding="13 8 8 8" materialDesign:DataGridAssist.ColumnHeaderPadding="8">
   
                 <DataGrid.Columns>
                 <DataGridTextColumn Header="ID" Binding="{Binding ID}" ></DataGridTextColumn>
@@ -39,7 +39,7 @@
                 <DataGridTextColumn Header="Width" Binding="{Binding Width}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Height" Binding="{Binding Height}"></DataGridTextColumn>
 
-            <DataGridCheckBoxColumn Header="Show Border" Binding="{Binding ShowBorder}" ElementStyle="{StaticResource MaterialDesignDataGridCheckBoxColumnStyle}"></DataGridCheckBoxColumn>
+            <DataGridCheckBoxColumn  Header="Show Border" Binding="{Binding ShowBorder}" ElementStyle="{StaticResource MaterialDesignDataGridCheckBoxColumnStyle}"></DataGridCheckBoxColumn>
             <DataGridCheckBoxColumn Header="On Top" Binding="{Binding OnTop}" IsReadOnly="True"  ElementStyle="{StaticResource MaterialDesignDataGridCheckBoxColumnStyle}"></DataGridCheckBoxColumn>
             </DataGrid.Columns>
         <i:Interaction.Triggers>

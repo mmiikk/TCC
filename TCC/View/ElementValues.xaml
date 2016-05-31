@@ -4,9 +4,183 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:TCC.View"
+               xmlns:conv="clr-namespace:TCC.Helper"
+               xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             DataContext="{Binding ElementValues, Source={StaticResource Locator}}" 
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
-    <Grid>
+           >
+    <UserControl.Resources>
+
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <!-- note you only need bring in these extra resource dictionaries when using non-default styles, so only bring them into your controls where the default style is not what you want -->
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.ComboBox.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.CheckBox.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Slider.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.TextBox.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Button.xaml" />
+
+            </ResourceDictionary.MergedDictionaries>
+            <BooleanToVisibilityConverter x:Key="booleanToVisibilityConverter" />
             
+            <conv:isNotConverter x:Key="isNotConverter" />
+        </ResourceDictionary>
+        
+    </UserControl.Resources>
+    
+    <Grid>
+        <materialDesign:Card Margin="0 4 0 0">
+            <Grid Margin="8">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="15*"></ColumnDefinition>
+                    <ColumnDefinition Width="15*"></ColumnDefinition>
+                    <ColumnDefinition Width="15*"></ColumnDefinition>
+                    <ColumnDefinition Width="15*"></ColumnDefinition>
+                    <ColumnDefinition Width="15*"></ColumnDefinition>
+                    <ColumnDefinition Width="25*"></ColumnDefinition>
+                   
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"></RowDefinition>
+                    <RowDefinition Height="auto"></RowDefinition>
+                    <RowDefinition Height="auto"></RowDefinition>
+                </Grid.RowDefinitions>
+
+                <Button Name="Value_IDBtn" Grid.Column="0" Grid.Row="0" Command="{Binding SetActiveValueCommand}" CommandParameter="{Binding ValueID}" >
+                    <Button.Style>
+                        <Style TargetType="Button" BasedOn="{StaticResource MaterialDesignRaisedAccentButton}">
+
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding Path=ValueID.Selected}"  Value="False">
+                                    <Setter Property="Background" Value="Gray" />
+                                    <Setter Property="BorderBrush" Value="DarkGray" />
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                    Value_ID
+                </Button>
+
+                <Button Name="FontColorBtn" Grid.Column="1" Grid.Row="0" Margin="8 0 0 0"  Command="{Binding SetActiveValueCommand}" CommandParameter="{Binding FontColor}">
+                    <Button.Style>
+                        <Style TargetType="Button" BasedOn="{StaticResource MaterialDesignRaisedAccentButton}">
+
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding Path=FontColor.Selected}"  Value="False">
+                                    <Setter Property="Background" Value="Gray" />
+                                    <Setter Property="BorderBrush" Value="DarkGray" />
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                    Font Color
+                </Button>
+
+                <Button Name="BackColorBtn" Grid.Column="2" Grid.Row="0" Margin="8 0 0 0"  Command="{Binding SetActiveValueCommand}" CommandParameter="{Binding BackColor}">
+                    <Button.Style>
+                        <Style TargetType="Button" BasedOn="{StaticResource MaterialDesignRaisedAccentButton}">
+
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding Path=BackColor.Selected}"  Value="False">
+                                    <Setter Property="Background" Value="Gray" />
+                                    <Setter Property="BorderBrush" Value="DarkGray" />
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                    Back Color
+                </Button>
+
+                <Button Name="ActionBtn" Grid.Column="3" Grid.Row="0" Margin="8 0 0 0" Command="{Binding SetActiveValueCommand}" CommandParameter="{Binding Action}">
+                    <Button.Style>
+                        <Style TargetType="Button" BasedOn="{StaticResource MaterialDesignRaisedAccentButton}">
+
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding Path=Action.Selected}"  Value="False">
+                                    <Setter Property="Background" Value="Gray" />
+                                    <Setter Property="BorderBrush" Value="DarkGray" />
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                    Action
+                </Button>
+
+                <Button Name="VisibleBtn" Grid.Column="4" Grid.Row="0" Margin="8 0 0 0" Command="{Binding SetActiveValueCommand}" CommandParameter="{Binding Visibility}">
+                    <Button.Style>
+                        <Style TargetType="Button" BasedOn="{StaticResource MaterialDesignRaisedAccentButton}">
+
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding Path=Visibility.Selected}"  Value="False">
+                                    <Setter Property="Background" Value="Gray" />
+                                    <Setter Property="BorderBrush" Value="DarkGray" />
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                    Visible
+                </Button>
+
+                <Grid Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="5" Margin="0 8 0 0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="20*"></ColumnDefinition>
+                        <ColumnDefinition Width="20*"></ColumnDefinition>
+                        <ColumnDefinition Width="20*"></ColumnDefinition>
+                        <ColumnDefinition Width="20*"></ColumnDefinition>
+                        <ColumnDefinition Width="20*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"></RowDefinition>
+                    </Grid.RowDefinitions>
+
+                    <Button Name="MaskBtn" Grid.Column="1" Grid.Row="0" Margin="8 0 0 0" Visibility="{Binding MaskVisibility,Converter={StaticResource booleanToVisibilityConverter}}"  >
+                        <Button.Style>
+                            <Style TargetType="Button" BasedOn="{StaticResource MaterialDesignRaisedAccentButton}">
+
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding Path=CurrentValue, Converter={StaticResource isNotConverter}, ConverterParameter='Mask'}"  Value="False">
+                                        <Setter Property="Background" Value="Gray" />
+                                        <Setter Property="BorderBrush" Value="DarkGray" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+                        Mask
+                    </Button>
+
+
+                    <Button Name="StaticBtn" Grid.Column="2" Grid.Row="0" Margin="8 0 0 0"  Visibility="{Binding StaticVisibility,Converter={StaticResource booleanToVisibilityConverter}}" >
+                        <Button.Style>
+                            <Style TargetType="Button" BasedOn="{StaticResource MaterialDesignRaisedAccentButton}">
+
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding Path=CurrentValue, Converter={StaticResource isNotConverter}, ConverterParameter='Static'}"  Value="False">
+                                        <Setter Property="Background" Value="Gray" />
+                                        <Setter Property="BorderBrush" Value="DarkGray" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+                        Static
+                    </Button>
+
+                    <Button Name="DirectBtn" Grid.Column="3" Grid.Row="0" Margin="8 0 0 0" Visibility="{Binding DirectVisibility,Converter={StaticResource booleanToVisibilityConverter}}" >
+                        <Button.Style>
+                            <Style TargetType="Button" BasedOn="{StaticResource MaterialDesignRaisedAccentButton}">
+
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding Path=CurrentValue, Converter={StaticResource isNotConverter},ConverterParameter='Direct'}"  Value="False">
+                                        <Setter Property="Background" Value="Gray" />
+                                        <Setter Property="BorderBrush" Value="DarkGray" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+                       Direct
+                    </Button>
+
+                </Grid>
+            </Grid>
+        </materialDesign:Card>
     </Grid>
 </UserControl>

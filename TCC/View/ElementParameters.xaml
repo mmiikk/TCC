@@ -5,6 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:mvvm="http://www.galasoft.ch/mvvmlight"
+              xmlns:local="clr-namespace:TCC.View"
              DataContext="{Binding ElementParameters, Source={StaticResource Locator}}" 
              mc:Ignorable="d" 
             >
@@ -62,6 +63,7 @@
                 <RowDefinition Height="auto"></RowDefinition>
                 <RowDefinition Height="auto"></RowDefinition>
                 <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition Height="auto"></RowDefinition>
             </Grid.RowDefinitions>
             <TextBlock Text="Position X" Grid.Column="0" Grid.Row="0"></TextBlock>
             <TextBlock Text="Position Y" Grid.Column="1" Grid.Row="0"></TextBlock>
@@ -98,6 +100,8 @@
                     <Grid.RowDefinitions>
                         <RowDefinition Height="auto"></RowDefinition>
                         <RowDefinition Height="auto"></RowDefinition>
+                        <RowDefinition Height="auto"></RowDefinition>
+                        
                     </Grid.RowDefinitions>
                     <TextBlock Grid.Column="0" Grid.Row="0" Grid.RowSpan="2" Text="Font&#x0a;properties:" TextAlignment="Center" Style="{StaticResource MaterialDesignSubheadingTextBlock}"></TextBlock>
                     <TextBlock Grid.Column="1" Grid.Row="0" Text="Size" TextAlignment="Center" Margin="8 0 8 0"></TextBlock>
@@ -192,6 +196,8 @@
                    
                 </Grid>
             </materialDesign:Card>
+
+            <local:ElementValues Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="10" Margin="8"></local:ElementValues>
         </Grid>
     </materialDesign:Card>
 </UserControl>

@@ -12,6 +12,7 @@ namespace TCC.Services
     interface IDataAccessService
     {
         ObservableCollection<Element> GetAllElements(int StationID);
+        ObservableCollection<Value> GetAllValues(int ElementID, int StationID);
         Font GetFont(int StationID, int ElementID);
     }
     class DataAccessService : IDataAccessService
@@ -50,6 +51,56 @@ namespace TCC.Services
                 throw ex;
             }
             return Elements;
+        }
+
+        public ObservableCollection<Value> GetAllValues(int StationID, int ElementID)
+        {
+            ObservableCollection<Value> Values = new ObservableCollection<Value>();
+            try
+            {
+                Values = sql.loadValuesAsObservableCollection(StationID, ElementID);
+                Value val = new Value();
+                val.ID = ElementID;
+                val.Type = "Static";
+                val.DB = 0;
+                val.StartByte = 0;
+                val.Length = 0;
+                val.Val = "";
+                val.Mask_ID = 0;
+                val.DBType = 2;
+                val.oPLC.ID = 1;
+                if (!Values.Any(p => p.ID == ElementID))
+                    Values.Add(val);
+
+                val.ID = ElementID + 1000;
+                val.Val = "0";
+                if ((!Values.Any(p => p.ID == (ElementID + 1000))) || (!Values.Any(p => p.ID == (ElementID + 3000))))
+                    Values.Add(val);
+
+                val.ID = ElementID + 2000;
+                val.Val = "65280";
+                if (!Values.Any(p => p.ID == (ElementID + 2000)))
+                    Values.Add(val);
+
+                val.ID = ElementID + 4000;
+                val.Val = "0";
+                val.Type = "";
+                if (!Values.Any(p => p.ID == (ElementID + 4000)))
+                    Values.Add(val);
+
+                val.ID = ElementID + 5000;
+                val.Val = "1";
+                val.Type = "Static";
+                if (!Values.Any(p => p.ID == (ElementID + 5000)))
+                    Values.Add(val);
+
+                Values.OrderBy(p => p.ID);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return Values;
         }
 
         public Font GetFont(int StationID, int ElementID)

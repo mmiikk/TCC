@@ -15,9 +15,11 @@
             <RowDefinition Height="auto" />
             <RowDefinition Height="50*" />
             <RowDefinition Height="auto" />
+          
         </Grid.RowDefinitions>
         <local:ThinClientConnect Grid.Row="0" Grid.Column="1" Margin="8"/>
         <local:ElementsGrid Grid.Row="1" Grid.Column="1" Margin="8 0 8 8"/>
         <local:ElementParameters Grid.Row="2" Grid.Column="1" Margin="8" />
+       
     </Grid>
 </UserControl>

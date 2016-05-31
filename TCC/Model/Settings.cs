@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace TCC.Model
 {
-    public class Settings
+    public class Settings : INotifyPropertyChanged
     {
         private string _IP = string.Empty;
         private string _DBUser = string.Empty;

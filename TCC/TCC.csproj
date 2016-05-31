@@ -96,13 +96,16 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Helper\isNotConverter.cs" />
     <Compile Include="Helper\sqlWorker.cs" />
     <Compile Include="MessageInfrastructure\MessageSelectedElements.cs" />
     <Compile Include="MessageInfrastructure\MessageElementsFromDB.cs" />
     <Compile Include="MessageInfrastructure\MessageException.cs" />
     <Compile Include="Model\Element.cs" />
     <Compile Include="Model\Font.cs" />
+    <Compile Include="Model\PLC.cs" />
     <Compile Include="Model\Settings.cs" />
+    <Compile Include="Model\Value.cs" />
     <Compile Include="Services\DataAccessService.cs" />
     <Compile Include="Settings1.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -111,6 +114,7 @@
     </Compile>
     <Compile Include="ViewModel\ElementParametersViewModel.cs" />
     <Compile Include="ViewModel\ElementsGridViewModel.cs" />
+    <Compile Include="ViewModel\ElementValuesViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\SettingsViewModel.cs" />
     <Compile Include="ViewModel\ThinClientConnectViewModel.cs" />
@@ -123,6 +127,9 @@
     </Compile>
     <Compile Include="View\ElementsGrid.xaml.cs">
       <DependentUpon>ElementsGrid.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ElementValues.xaml.cs">
+      <DependentUpon>ElementValues.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Settings.xaml.cs">
       <DependentUpon>Settings.xaml</DependentUpon>
@@ -159,6 +166,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\ElementsGrid.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ElementValues.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
