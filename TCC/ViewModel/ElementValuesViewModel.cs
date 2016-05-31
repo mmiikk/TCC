@@ -51,6 +51,14 @@ namespace TCC.ViewModel
                 if (this.SelectedElements.Count == 1)
                     ConnectDB();
             });
+
+            Messenger.Default.Register<MessageStaticValue>(this, (MessageStaticValue) =>
+            {
+                this.CurrentValue = MessageStaticValue.Val;
+
+                if (ValueID.Selected == true)
+                    ValueID = CurrentValue;
+            });
         }
 
         void SetActiveValue(Value val)
@@ -78,6 +86,11 @@ namespace TCC.ViewModel
                 DirectVisibility = false;
 
             CurrentValue = val;
+
+            Messenger.Default.Send<MessageStaticValue>(new MessageStaticValue()
+            {
+                Val  = this.CurrentValue
+            });
         }
 
      

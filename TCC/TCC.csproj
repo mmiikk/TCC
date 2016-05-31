@@ -101,6 +101,7 @@
     <Compile Include="MessageInfrastructure\MessageSelectedElements.cs" />
     <Compile Include="MessageInfrastructure\MessageElementsFromDB.cs" />
     <Compile Include="MessageInfrastructure\MessageException.cs" />
+    <Compile Include="MessageInfrastructure\MessageStaticValue.cs" />
     <Compile Include="Model\Element.cs" />
     <Compile Include="Model\Font.cs" />
     <Compile Include="Model\PLC.cs" />
@@ -117,6 +118,7 @@
     <Compile Include="ViewModel\ElementValuesViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\SettingsViewModel.cs" />
+    <Compile Include="ViewModel\StaticValuesTextViewModel.cs" />
     <Compile Include="ViewModel\ThinClientConnectViewModel.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />
     <Compile Include="View\Configurator.xaml.cs">
@@ -133,6 +135,9 @@
     </Compile>
     <Compile Include="View\Settings.xaml.cs">
       <DependentUpon>Settings.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\StaticValueText.xaml.cs">
+      <DependentUpon>StaticValueText.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\ThinClientConnect.xaml.cs">
       <DependentUpon>ThinClientConnect.xaml</DependentUpon>
@@ -174,6 +179,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Settings.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\StaticValueText.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

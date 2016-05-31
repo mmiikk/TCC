@@ -49,6 +49,7 @@ namespace TCC.ViewModel
             SimpleIoc.Default.Register<ElementsGridViewModel>();
             SimpleIoc.Default.Register<ElementParametersViewModel>();
             SimpleIoc.Default.Register<ElementValuesViewModel>();
+            SimpleIoc.Default.Register<StaticValuesTextViewModel>();
         }
 
         public MainViewModel Main
@@ -95,6 +96,14 @@ namespace TCC.ViewModel
             get
             {
                 return ServiceLocator.Current.GetInstance<ElementValuesViewModel>();
+            }
+        }
+
+        public StaticValuesTextViewModel StaticValuesText
+        {
+            get
+            {
+                return ServiceLocator.Current.GetInstance<StaticValuesTextViewModel>();
             }
         }
 

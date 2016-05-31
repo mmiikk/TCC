@@ -104,10 +104,10 @@
                         
                     </Grid.RowDefinitions>
                     <TextBlock Grid.Column="0" Grid.Row="0" Grid.RowSpan="2" Text="Font&#x0a;properties:" TextAlignment="Center" Style="{StaticResource MaterialDesignSubheadingTextBlock}"></TextBlock>
-                    <TextBlock Grid.Column="1" Grid.Row="0" Text="Size" TextAlignment="Center" Margin="8 0 8 0"></TextBlock>
-                    <ComboBox Grid.Column="1" Grid.Row="1" Margin="8 0 8 0"></ComboBox>
+                    <ComboBox Grid.Row="0" Grid.Column="1" Grid.RowSpan="2" materialDesign:TextFieldAssist.Hint="Thin Client ID" Margin="8 0 8 0" Style="{StaticResource MaterialDesignFloatingHintComboBox}" ItemsSource="{Binding Fonts}" SelectedIndex="0" SelectedItem="{Binding SelectedFont.Size}"
+                  IsEditable="False" materialDesign:TextFieldAssist.HintOpacity=".26"></ComboBox>
 
-                    <Button Grid.Row="0" Grid.Column="2" Grid.RowSpan="2"
+                    <Button Grid.Row="0" Grid.Column="2" Grid.RowSpan="2" Width="auto"  Height="auto"
                           Margin="8 0 4 0" 
                           ToolTip="MaterialDesignFlatPrimaryToggleButton" Command="{Binding TooglePropertyCommand}" CommandParameter="Bold"
                         >
@@ -126,7 +126,7 @@
                         
                     </Button>
 
-                    <Button Grid.Row="0" Grid.Column="3" Grid.RowSpan="2"
+                    <Button Grid.Row="0" Grid.Column="3" Grid.RowSpan="2"  Width="auto"  Height="auto"
                           Margin="4 0 4 0" 
                           ToolTip="MaterialDesignFlatPrimaryToggleButton" Command="{Binding TooglePropertyCommand}" CommandParameter="Italic"
                         >
@@ -145,7 +145,7 @@
 
                     </Button>
 
-                    <Button Grid.Row="0" Grid.Column="4" Grid.RowSpan="2"
+                    <Button Grid.Row="0" Grid.Column="4" Grid.RowSpan="2"  Width="auto" Height="auto"
                           Margin="4 0 4 0" 
                           ToolTip="MaterialDesignFlatPrimaryToggleButton" Command="{Binding TooglePropertyCommand}" CommandParameter="Underline"
                         >

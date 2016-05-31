@@ -19,6 +19,7 @@ namespace TCC.ViewModel
         Element _SelectedElement;
         Font _SelectedFont;
         ObservableCollection<Element> _SelectedElements;
+        ObservableCollection<int> _Fonts;
         public RelayCommand<string> TooglePropertyCommand { get; set; }
         bool _Show;
 
@@ -28,6 +29,9 @@ namespace TCC.ViewModel
             TooglePropertyCommand = new RelayCommand<string>(ToogleProperty);
             Show = false;
             SelectedElements = new ObservableCollection<Element>();
+            Fonts = new ObservableCollection<int>();
+            for (int i = 0; (8 + i * 2) <= 72; i++)
+                Fonts.Add(8 + i * 2);
             Messenger.Default.Register<MessageSelectedElements>(this, (MessageSelectedElements) =>
             {
                 this.SelectedElements = MessageSelectedElements.SelectedElements;
@@ -140,6 +144,16 @@ namespace TCC.ViewModel
             {
                 _SelectedFont = value;
                 RaisePropertyChanged("SelectedFont");
+            }
+        }
+
+        public ObservableCollection<int> Fonts
+        {
+            get { return _Fonts; }
+            set
+            {
+                _Fonts = value;
+                RaisePropertyChanged("Fonts");
             }
         }
 

@@ -9,17 +9,22 @@
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="30*" />
+            <ColumnDefinition Width="5" />
             <ColumnDefinition Width="70*" />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto" />
+           
             <RowDefinition Height="50*" />
+            <RowDefinition Height="5" />
             <RowDefinition Height="auto" />
           
         </Grid.RowDefinitions>
-        <local:ThinClientConnect Grid.Row="0" Grid.Column="1" Margin="8"/>
-        <local:ElementsGrid Grid.Row="1" Grid.Column="1" Margin="8 0 8 8"/>
-        <local:ElementParameters Grid.Row="2" Grid.Column="1" Margin="8" />
+        <GridSplitter Grid.Column="1" Grid.RowSpan="3" ResizeDirection="Columns" Width="Auto" Height="auto" HorizontalAlignment="Stretch" Margin="0" Name="GridSplitter1" />
+        <local:ThinClientConnect Grid.Row="0" Grid.Column="2" Margin="8"/>
+        <local:ElementsGrid Grid.Row="1" Grid.Column="2" Margin="8 0 8 8"/>
+        <GridSplitter Grid.Column="2" Grid.Row="2" ResizeDirection="Rows" Width="Auto" Height="auto" HorizontalAlignment="Stretch" Margin="0" Name="GridSplitter2" />
+        <local:ElementParameters Grid.Row="3" Grid.Column="2" Margin="8" />
        
     </Grid>
 </UserControl>
