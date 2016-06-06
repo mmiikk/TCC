@@ -107,3 +107,5 @@ C:\Users\Admin\Documents\GitHub\TCC\TCC\obj\Debug\TCC.Properties.Resources.resou
 C:\Users\Admin\Documents\GitHub\TCC\TCC\obj\Debug\TCC.csproj.GenerateResource.Cache
 C:\Users\Admin\Documents\GitHub\TCC\TCC\obj\Debug\TCC.exe
 C:\Users\Admin\Documents\GitHub\TCC\TCC\obj\Debug\TCC.pdb
+C:\Users\Mateusz\Documents\GitHub\TCC\TCC\TCC\obj\Debug\View\ColorPicker.g.cs
+C:\Users\Mateusz\Documents\GitHub\TCC\TCC\TCC\obj\Debug\View\ColorPicker.baml

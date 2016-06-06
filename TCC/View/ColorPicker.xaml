@@ -5,6 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
               xmlns:mvvm="http://www.galasoft.ch/mvvmlight"
+             xmlns:conv="clr-namespace:TCC.Helper"
              xmlns:local="clr-namespace:TCC.View"
                
                DataContext="{Binding ColorPicker, Source={StaticResource Locator}}" 
@@ -23,7 +24,7 @@
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.ToggleButton.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Slider.xaml" />
             </ResourceDictionary.MergedDictionaries>
-           
+            <conv:VisibilityConverter x:Key="VisibilityConverter" />
             <Style TargetType="{x:Type ListBox}" BasedOn="{StaticResource MaterialDesignListBox}">
                 <Setter Property="Margin" Value="8 0 8 0" />
                 
@@ -47,15 +48,13 @@
         </ResourceDictionary>
     </UserControl.Resources>
     <Grid Margin="8" >
-        <Grid.Resources>
-            <BooleanToVisibilityConverter x:Key="booleanToVisibilityConverter" />
-        </Grid.Resources>
-        <materialDesign:Card  Background="{DynamicResource PrimaryHueDarkBrush}"  Visibility="{Binding Show,Converter={StaticResource booleanToVisibilityConverter}}" 
+        
+        <materialDesign:Card  Background="{DynamicResource PrimaryHueDarkBrush}"  Visibility="{Binding Path=Show, Converter={StaticResource VisibilityConverter}}"
                   Foreground="{DynamicResource PrimaryHueDarkForegroundBrush}"  Padding="8">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="80*"></ColumnDefinition>
-            <ColumnDefinition Width="20*"></ColumnDefinition>
+            <ColumnDefinition Width="70*"></ColumnDefinition>
+            <ColumnDefinition Width="30*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="70*"></RowDefinition>
@@ -63,7 +62,7 @@
         </Grid.RowDefinitions>
 
                 <materialDesign:Card  Background="{DynamicResource PrimaryHueLightBrush}"
-                  Foreground="{DynamicResource PrimaryHueLightForegroundBrush}"  Grid.Column="0" Grid.Row="0" Padding="8">
+                  Foreground="{DynamicResource PrimaryHueLightForegroundBrush}"  Grid.Column="0" Grid.Row="0" Padding="4">
                     <ItemsControl ItemsSource="{Binding Colors}">
                         <ItemsControl.ItemsPanel>
                             <ItemsPanelTemplate>
@@ -86,7 +85,7 @@
                 </materialDesign:Card>
 
             <materialDesign:Card  Background="{DynamicResource PrimaryHueLightBrush}" 
-                  Foreground="{DynamicResource PrimaryHueLightForegroundBrush}"  Grid.Column="1" Grid.Row="0" Padding="8" Margin="8 0 0 0">
+                  Foreground="{DynamicResource PrimaryHueLightForegroundBrush}"  Grid.Column="1" Grid.Row="0" Padding="8" Margin="4 0 0 0">
                     <StackPanel >
                         <Button Background="{Binding SelectedColor.RGB}" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Width="auto" Height="auto"></Button>
                         <TextBox Text="{Binding SelectedColor.iRGB}" TextAlignment="Center"></TextBox>

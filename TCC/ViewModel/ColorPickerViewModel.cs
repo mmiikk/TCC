@@ -13,7 +13,7 @@ using TCC.Model;
 
 namespace TCC.ViewModel
 {
-    public class ColorPickerViewModel : ViewModelBase, INotifyPropertyChanged
+    public class ColorPickerViewModel : ViewModelBase
     {
         public ObservableCollection<Color> Colors { get; set; }
         private Color _SelectedColor { get; set; }
@@ -43,10 +43,10 @@ namespace TCC.ViewModel
             for (int i = 1; i <= 8; i++)
                 Colors.Add(new Color(0 + (i - 1) * 255/7, 0 + (i - 1) * 255/7, 0 + (i - 1) * 255/7));
 
-            
+           
             ColorClickCommand = new RelayCommand<string>(ColorClicked);
             SelectedColor = new Color(1, 1, 1);
-            Show = true;
+            Show = false;
 
             Messenger.Default.Register<MessageStaticValue>(this, (MessageStaticValue) =>
             {
@@ -100,11 +100,10 @@ namespace TCC.ViewModel
         private void ColorClicked(string obj)
         {
             Color col = Colors.FirstOrDefault(a => a.RGB == obj);
-            SelectedColor = new Color(col.R, col.G, col.B);
-            if (Show == true)
-                Show = false;
-            else
-                Show = true;
+            SelectedColor.RGB = col.iRGB;
+            // SelectedColor = new Color(col.R, col.G, col.B);
+            sendSelectedColor();
+
         }
 
         public Color SelectedColor
@@ -116,16 +115,21 @@ namespace TCC.ViewModel
                 // Call OnPropertyChanged whenever the property is updated
                 OnPropertyChanged("SelectedColor");
 
+                sendSelectedColor();
+               
+            }
+        }
 
-                if (Val != null)
+        public void sendSelectedColor()
+        {
+            if (Val != null)
+            {
+                Val.Val = SelectedColor.iRGB;
+                Messenger.Default.Send<MessageStaticValue>(new MessageStaticValue()
                 {
-                    Val.Val = SelectedColor.iRGB;
-                    Messenger.Default.Send<MessageStaticValue>(new MessageStaticValue()
-                    {
-                        Val = this.Val,
-                        Type = ValID
-                    });
-                }
+                    Val = this.Val,
+                    Type = ValID
+                });
             }
         }
 

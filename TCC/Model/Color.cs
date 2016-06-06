@@ -15,6 +15,7 @@ namespace TCC.Model
             R = r;
             G = g;
             B = b;
+            RGB = iRGB;
         }
         private int _R { get; set; }
         private int _G { get; set; }
@@ -85,6 +86,8 @@ namespace TCC.Model
                 G = val / 256 % 256;
                 B = (val / 256 / 256) % 256;
                 R = val % 256;
+                OnPropertyChanged("RGB");
+                OnPropertyChanged("Color");
             }
         }
         
