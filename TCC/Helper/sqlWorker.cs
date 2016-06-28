@@ -155,5 +155,24 @@ namespace TCC.Helper
             return PLCSet;
         }
 
+        public ObservableCollection<Mask> loadMasks(int StationID, int MaskID)
+        {
+            ObservableCollection<Mask> MaskSet = new ObservableCollection<Mask>();
+            DataSet Data = loadData(String.Format("Select * from " + Settings1.Default.DBName + ".[dbo].[Masks] where ID = {0} and Station_ID = {1} order by ID asc",MaskID,StationID));
+
+            foreach (DataRow row in Data.Tables[0].Rows)
+            {
+                Mask mask = new Mask();
+                mask.ID = (int)row["ID"];
+                mask.Station_ID = (byte)row["Station_ID"];
+                mask.Position = (byte)row["Position"];
+                mask.Value = row["Value"].ToString();
+                mask.MaskVal = row["Mask"].ToString();
+                MaskSet.Add(mask);
+            }
+
+            return MaskSet;
+        }
+
     }
 }

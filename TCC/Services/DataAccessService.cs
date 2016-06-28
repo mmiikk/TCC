@@ -13,7 +13,7 @@ namespace TCC.Services
     {
         ObservableCollection<Element> GetAllElements(int StationID);
         ObservableCollection<Value> GetAllValues(int ElementID, int StationID);
-
+        ObservableCollection<Mask> GetMasks(int StationID, int MaskID);
         ObservableCollection<PLC> GetAllPLCs();
         Font GetFont(int StationID, int ElementID);
     }
@@ -131,6 +131,20 @@ namespace TCC.Services
                 throw ex;
             }
             return plcs;
+        }
+
+        public ObservableCollection<Mask> GetMasks(int StationID, int MaskID)
+        {
+            ObservableCollection<Mask> masks = new ObservableCollection<Mask>();
+            try
+            {
+                masks = sql.loadMasks(StationID, MaskID);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return masks;
         }
 
     }

@@ -67,7 +67,7 @@ namespace TCC.ViewModel
 
             Messenger.Default.Register<MessageStaticValue>(this, (MessageStaticValue) =>
             {
-                if ((CurrentValue.ID >= 2000 && _CurrentValue.ID < 3000))
+                if ((CurrentValue.ID >= 2000 && CurrentValue.ID < 3000))
                 {
                     BackColor.Val = MessageStaticValue.Val.Val;
                     CurrentValue.Val = MessageStaticValue.Val.Val;
@@ -94,12 +94,22 @@ namespace TCC.ViewModel
 
             if (type == "Mask")
             {
+                if (CurrentValue.Type == "Static")
+                {
+                    CurrentValue.Type = "Bit";
+                    CurrentValue.DBPanel = true;
+                }
                 nVal.Mask_ID = nVal.ID;
                 nVal.TypeVisibility = "Mask";
             }
 
             if (type == "Direct")
             {
+                if (CurrentValue.Type == "Static")
+                {
+                    CurrentValue.Type = "Bit";
+                    CurrentValue.DBPanel = true;
+                }
                 nVal.Mask_ID = 0;
                 nVal.TypeVisibility = "Direct";
             }
@@ -142,11 +152,13 @@ namespace TCC.ViewModel
 
         void SendStaticValue()
         {
+            
             Messenger.Default.Send<MessageStaticValue>(new MessageStaticValue()
             {
                 Val = this.CurrentValue,
                 Type = this.CurrentValue.ID
             });
+           
         }
      
 

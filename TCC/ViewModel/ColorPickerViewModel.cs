@@ -50,9 +50,18 @@ namespace TCC.ViewModel
 
             Messenger.Default.Register<MessageStaticValue>(this, (MessageStaticValue) =>
             {
-                this.Val = MessageStaticValue.Val;
+                if (MessageStaticValue.Val.Val != "")
+                    this.Val = MessageStaticValue.Val;
+                else
+                {
+                    Value v = new Value();
+                    v = MessageStaticValue.Val;
+                    v.Val = "0";
+                    this.Val = v;
+                }
+                
                 this.ValID = MessageStaticValue.Val.ID;
-                if ((_ValID >= 2000 && _ValID < 3000) || (_ValID >= 1000 && _ValID < 2000))
+                if (this.Val.Mask_ID == 0 && ((_ValID >= 2000 && _ValID < 3000) || (_ValID >= 1000 && _ValID < 2000)))
                 {
                     SelectedColor.RGB = this.Val.Val;
                     Show = true;

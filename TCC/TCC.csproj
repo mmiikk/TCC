@@ -74,6 +74,8 @@
     <Reference Include="System" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\MahApps.Metro.1.2.4.0\lib\net45\System.Windows.Interactivity.dll</HintPath>
       <Private>True</Private>
@@ -100,8 +102,11 @@
     <Compile Include="Helper\RGBConverter.cs" />
     <Compile Include="Helper\sqlWorker.cs" />
     <Compile Include="Helper\VisibilityDirectConverter.cs" />
+    <Compile Include="Helper\VisibilityLength.cs" />
     <Compile Include="Helper\VisibilityStaticConverter.cs" />
     <Compile Include="Helper\VisibilityValues.cs" />
+    <Compile Include="Helper\VisibilityValueType.cs" />
+    <Compile Include="MessageInfrastructure\MessageMask.cs" />
     <Compile Include="MessageInfrastructure\MessagePLCs.cs" />
     <Compile Include="MessageInfrastructure\MessageSelectedElements.cs" />
     <Compile Include="MessageInfrastructure\MessageElementsFromDB.cs" />
@@ -110,6 +115,7 @@
     <Compile Include="Model\Color.cs" />
     <Compile Include="Model\Element.cs" />
     <Compile Include="Model\Font.cs" />
+    <Compile Include="Model\Mask.cs" />
     <Compile Include="Model\PLC.cs" />
     <Compile Include="Model\Settings.cs" />
     <Compile Include="Model\Value.cs" />
@@ -125,6 +131,7 @@
     <Compile Include="ViewModel\ElementsGridViewModel.cs" />
     <Compile Include="ViewModel\ElementValuesViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
+    <Compile Include="ViewModel\MaskViewModel.cs" />
     <Compile Include="ViewModel\SettingsViewModel.cs" />
     <Compile Include="ViewModel\StaticValuesTextViewModel.cs" />
     <Compile Include="ViewModel\ThinClientConnectViewModel.cs" />
@@ -146,6 +153,9 @@
     </Compile>
     <Compile Include="View\ElementValues.xaml.cs">
       <DependentUpon>ElementValues.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Mask.xaml.cs">
+      <DependentUpon>Mask.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Settings.xaml.cs">
       <DependentUpon>Settings.xaml</DependentUpon>
@@ -197,6 +207,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\ElementValues.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Mask.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

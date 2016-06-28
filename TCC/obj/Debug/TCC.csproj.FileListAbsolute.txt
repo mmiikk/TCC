@@ -111,4 +111,6 @@ C:\Users\Admin\Documents\GitHub\TCC\TCC\obj\Debug\TCC.Properties.Resources.resou
 C:\Users\Admin\Documents\GitHub\TCC\TCC\obj\Debug\TCC.csproj.GenerateResource.Cache
 C:\Users\Admin\Documents\GitHub\TCC\TCC\obj\Debug\TCC.exe
 C:\Users\Admin\Documents\GitHub\TCC\TCC\obj\Debug\TCC.pdb
+C:\Users\Admin\Documents\GitHub\TCC\TCC\obj\Debug\View\Mask.g.cs
+C:\Users\Admin\Documents\GitHub\TCC\TCC\obj\Debug\View\Mask.baml
 C:\Users\Admin\Documents\GitHub\TCC\TCC\obj\Debug\TCC.csprojResolveAssemblyReference.cache

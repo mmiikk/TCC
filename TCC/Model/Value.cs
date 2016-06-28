@@ -187,7 +187,7 @@ namespace TCC.Model
             get { return _DBPanel; }
             set
             {
-                _DBStation = value;
+                _DBPanel = value;
                 // Call OnPropertyChanged whenever the property is updated
                 OnPropertyChanged("DBPanel");
             }

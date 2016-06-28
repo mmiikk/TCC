@@ -23,7 +23,10 @@ namespace TCC.ViewModel
             Messenger.Default.Register<MessageStaticValue>(this, (MessageStaticValue) =>
             {
                 this.Val = MessageStaticValue.Val;
-                this.StaticText = MessageStaticValue.Val.Val;
+                if (MessageStaticValue.Val.Val != "")
+                    this.StaticText = MessageStaticValue.Val.Val;
+                else
+                    this.StaticText = "0";
                 this.Type = MessageStaticValue.Val.ID;
             });
         }

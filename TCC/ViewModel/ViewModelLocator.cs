@@ -52,6 +52,7 @@ namespace TCC.ViewModel
             SimpleIoc.Default.Register<StaticValuesTextViewModel>();
             SimpleIoc.Default.Register<ColorPickerViewModel>();
             SimpleIoc.Default.Register<DirectFieldsViewModel>();
+            SimpleIoc.Default.Register<MaskViewModel>();
         }
 
         public MainViewModel Main
@@ -122,6 +123,14 @@ namespace TCC.ViewModel
             get
             {
                 return ServiceLocator.Current.GetInstance<DirectFieldsViewModel>();
+            }
+        }
+
+        public MaskViewModel Mask
+        {
+            get
+            {
+                return ServiceLocator.Current.GetInstance<MaskViewModel>();
             }
         }
 

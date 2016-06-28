@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using TCC.MessageInfrastructure;
 using TCC.Model;
+using TCC.Services;
 
 namespace TCC.ViewModel
 {
@@ -17,8 +18,11 @@ namespace TCC.ViewModel
     {
         private Value _Val { get; set; }
         private ObservableCollection<PLC> _PLCs { get; set; }
+        private ObservableCollection<Mask> _Masks { get; set; }
         private PLC _SelectedPLC { get; set; }
-        RelayCommand<string> SetActiveDBTypeCommand { get; set; }
+        public RelayCommand<string> SetActiveDBTypeCommand { get; set; }
+        public RelayCommand<string> SetActiveTypeCommand { get; set; }
+
         private string _DBPanel;
         private string _DBStation;
         private string _DBManual;
@@ -26,27 +30,26 @@ namespace TCC.ViewModel
         {
             Val = new Value();
             PLCs = new ObservableCollection<PLC>();
+            Masks = new ObservableCollection<Mask>();
             SelectedPLC = new PLC();
             SetActiveDBTypeCommand = new RelayCommand<string>(SetActiveDBType);
+            SetActiveTypeCommand = new RelayCommand<string>(SetActiveType);
             Messenger.Default.Register<MessageStaticValue>(this, (MessageStaticValue) =>
             {
                 this.Val = MessageStaticValue.Val;
-                if(this.Val.DBPanel)
+               
+                if (this.Val.Station_ID > 100)
                 {
-                    DBPanel = this.Val.DB.ToString();
-                    if (this.Val.Station_ID > 100)
-                        DBStation = (400 + (this.Val.Station_ID - 1) - 100).ToString();
-                    else
-                        DBStation = (400 + (this.Val.Station_ID - 1)).ToString();
+                    DBStation = (400 + (this.Val.Station_ID - 1) - 100).ToString();
+                    DBPanel = (1050 + (this.Val.Station_ID - 1) - 100).ToString();
                 }
-                if (this.Val.DBStation)
+                else
                 {
-                    DBStation = this.Val.DB.ToString();
-                    if (this.Val.Station_ID > 100)
-                        DBPanel = (1050 + (this.Val.Station_ID - 1) - 100).ToString();
-                    else
-                        DBPanel = (1050 + (this.Val.Station_ID - 1)).ToString();
+                    DBStation = (400 + (this.Val.Station_ID - 1)).ToString();
+                    DBPanel = (1050 + (this.Val.Station_ID - 1)).ToString();
                 }
+                if (this.Val.Mask_ID != 0)
+                    ConnectDB();
 
             });
             Messenger.Default.Register<MessagePLCs>(this, (MessagePLCs) =>
@@ -66,6 +69,47 @@ namespace TCC.ViewModel
 
         }
 
+        void SetActiveType(string Type)
+        {
+            Value _val = new Value();
+            _val = Val;
+            _val.Type = Type;
+            Val = _val;
+
+        }
+
+        void ConnectDB()
+        {
+            ConnectDBTask(Val.Station_ID, Val.Mask_ID).ContinueWith(task =>
+            {
+                Masks = task.Result;
+
+
+            }, TaskContinuationOptions.NotOnFaulted);
+
+        }
+        static Task<ObservableCollection<Mask>> ConnectDBTask(int StationID, int ElementID)
+        {
+            ObservableCollection<Mask> masks = new ObservableCollection<Mask>();
+
+            return Task<ObservableCollection<Mask>>.Factory.StartNew(() =>
+            {
+                try
+                {
+                    return masks = DataAccessService.Instance.GetMasks(StationID, ElementID);
+                }
+                catch (Exception ex)
+                {
+                    Messenger.Default.Send<MessageException>(new MessageException()
+                    {
+                        Exception = ex.Message.ToString()
+                    });
+
+                    return null;
+                }
+            });
+        }
+
         public ObservableCollection<PLC> PLCs
         {
             get { return _PLCs; }
@@ -73,6 +117,20 @@ namespace TCC.ViewModel
             {
                 _PLCs = value;
                 RaisePropertyChanged("PLCs");
+            }
+        }
+
+        public ObservableCollection<Mask> Masks
+        {
+            get { return _Masks; }
+            set
+            {
+                _Masks = value;
+                RaisePropertyChanged("Masks");
+                Messenger.Default.Send<MessageMask>(new MessageMask()
+                {
+                    MasksFromDB = Masks
+                });
             }
         }
 

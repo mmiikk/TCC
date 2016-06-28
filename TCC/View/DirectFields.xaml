@@ -24,7 +24,9 @@
                 
             </ResourceDictionary.MergedDictionaries>
             <conv:VisibilityDirectConverter x:Key="VisibilityDirectConverter"></conv:VisibilityDirectConverter>
+            <conv:VisibilityValueType x:Key="VisibilityValueType"></conv:VisibilityValueType>
             <conv:VisibilityValues x:Key="VisibilityValues"></conv:VisibilityValues>
+            <conv:VisibilityLength x:Key="VisibilityLength"></conv:VisibilityLength>
             <Style TargetType="{x:Type ListBox}" BasedOn="{StaticResource MaterialDesignListBox}">
                 <Setter Property="Margin" Value="8 0 8 0" />
 
@@ -46,7 +48,8 @@
     <Grid  Visibility="{Binding Path=Val, Converter={StaticResource VisibilityDirectConverter}}" Margin="0 8 0 0">
         <Grid.RowDefinitions>
             <RowDefinition Height="10*"></RowDefinition>
-            <RowDefinition Height="90*"></RowDefinition>
+            <RowDefinition Height="45*"></RowDefinition>
+            <RowDefinition Height="45*"></RowDefinition>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="15*"></ColumnDefinition>
@@ -57,11 +60,11 @@
             <ColumnDefinition Width="25*"></ColumnDefinition>
 
         </Grid.ColumnDefinitions>
-        <Button Grid.Column="0" Grid.Row="0" >Bit
+        <Button Grid.Column="0" Grid.Row="0" Command="{Binding SetActiveTypeCommand}" CommandParameter="Bit">Bit
             <Button.Style>
                 <Style TargetType="Button" BasedOn="{StaticResource MaterialDesignRaisedAccentButton}">
                     <Style.Triggers>
-                        <DataTrigger Binding="{Binding Path=Val, Converter={StaticResource VisibilityValues}, ConverterParameter='Bit'}"  Value="False">
+                        <DataTrigger Binding="{Binding Path=Val, Converter={StaticResource VisibilityValues}, ConverterParameter='Bit'}"  Value="False" >
                             <Setter Property="Background" Value="Gray" />
                             <Setter Property="BorderBrush" Value="DarkGray" />
                         </DataTrigger>
@@ -69,7 +72,7 @@
                 </Style>
             </Button.Style>
         </Button>
-        <Button Grid.Column="1" Grid.Row="0" Margin="8 0 0 0">Int
+        <Button Grid.Column="1" Grid.Row="0" Margin="8 0 0 0" Command="{Binding SetActiveTypeCommand}" CommandParameter="Int">Int
             <Button.Style>
                 <Style TargetType="Button" BasedOn="{StaticResource MaterialDesignRaisedAccentButton}">
                     <Style.Triggers>
@@ -81,7 +84,7 @@
                 </Style>
             </Button.Style>
         </Button>
-        <Button Grid.Column="2" Grid.Row="0" Margin="8 0 0 0" >Real
+        <Button Grid.Column="2" Grid.Row="0" Margin="8 0 0 0" Command="{Binding SetActiveTypeCommand}" CommandParameter="Real">Real
             <Button.Style>
                 <Style TargetType="Button" BasedOn="{StaticResource MaterialDesignRaisedAccentButton}">
                     <Style.Triggers>
@@ -93,7 +96,7 @@
                 </Style>
             </Button.Style>
         </Button>
-        <Button Grid.Column="3" Grid.Row="0" Margin="8 0 0 0" >String
+        <Button Grid.Column="3" Grid.Row="0" Margin="8 0 0 0" Command="{Binding SetActiveTypeCommand}" CommandParameter="String">String
             <Button.Style>
                 <Style TargetType="Button" BasedOn="{StaticResource MaterialDesignRaisedAccentButton}">
                     <Style.Triggers>
@@ -105,7 +108,7 @@
                 </Style>
             </Button.Style>
         </Button>
-        <Button Grid.Column="4" Grid.Row="0"  Margin="8 0 0 0">Byte
+        <Button Grid.Column="4" Grid.Row="0"  Margin="8 0 0 0" Command="{Binding SetActiveTypeCommand}" CommandParameter="Byte">Byte
             <Button.Style>
                 <Style TargetType="Button" BasedOn="{StaticResource MaterialDesignRaisedAccentButton}">
                     <Style.Triggers>
@@ -123,8 +126,9 @@
                   Foreground="{DynamicResource PrimaryHueLightForegroundBrush}">
             <Grid  Visibility="{Binding Path=Val, Converter={StaticResource VisibilityDirectConverter}}">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="50*"></RowDefinition>
-                    <RowDefinition Height="50*"></RowDefinition>
+                    <RowDefinition Height="33*"></RowDefinition>
+                    <RowDefinition Height="33*"></RowDefinition>
+                    
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="15*"></ColumnDefinition>
@@ -139,13 +143,15 @@
                 </Grid.ColumnDefinitions>
 
                 <TextBlock Text="Start Byte" Grid.Column="0" Grid.Row="0" Margin="8 0 8 0"></TextBlock>
-                <TextBlock Text="Length" Grid.Column="1" Grid.Row="0" Margin="8 0 8 0"></TextBlock>
+                <TextBlock Text="Length" Grid.Column="1" Grid.Row="0" Margin="8 0 8 0"  Visibility="{Binding Path=Val, Converter={StaticResource VisibilityValueType}, ConverterParameter='String'}" />
+                <TextBlock Text="Bit" Grid.Column="1" Grid.Row="0" Margin="8 0 8 0"  Visibility="{Binding Path=Val, Converter={StaticResource VisibilityValueType}, ConverterParameter='Bit'}" />
+
                 <TextBlock Text="DB Station" Grid.Column="3" Grid.Row="0" Grid.ColumnSpan="2" Margin="8 0 8 0"></TextBlock>
                 <TextBlock Text="DB Panel" Grid.Column="5" Grid.Row="0"  Grid.ColumnSpan="2" Margin="8 0 8 0"></TextBlock>
                 <TextBlock Text="DB Manual" Grid.Column="7" Grid.Row="0"  Grid.ColumnSpan="2" Margin="8 0 8 0"></TextBlock>
 
                 <TextBox Grid.Column="0" Grid.Row="1" Text="{Binding Val.StartByte}" TextAlignment="Center" Margin="8 0 8 0"></TextBox>
-                <TextBox Grid.Column="1" Grid.Row="1" Text="{Binding Val.Length}" TextAlignment="Center" Margin="8 0 8 0"></TextBox>
+                <TextBox Grid.Column="1" Grid.Row="1" Text="{Binding Val.Length}" Visibility="{Binding Path=Val, Converter={StaticResource VisibilityLength}}" TextAlignment="Center" Margin="8 0 8 0"></TextBox>
                 <ToggleButton Style="{StaticResource MaterialDesignSwitchToggleButton}" VerticalAlignment="Center" Margin="8 0 0 0" Grid.Column="3" Grid.Row="1" HorizontalAlignment="Center"
                        IsChecked="{Binding Val.DBStation}" Command="{Binding SetActiveDBTypeCommand}" CommandParameter="Station"      />
                 <TextBox Grid.Column="4" Grid.Row="1" Text="{Binding DBStation}" TextAlignment="Center" Margin="8 0 8 0"></TextBox>
@@ -158,7 +164,10 @@
 
                 <ComboBox Grid.Row="0" Grid.Column="2"  Margin="8 0 8 0" Grid.RowSpan="2" materialDesign:TextFieldAssist.Hint="PLC"  Style="{StaticResource MaterialDesignFloatingHintComboBox}"  ItemsSource="{Binding PLCs}" DisplayMemberPath="Name" SelectedIndex="0" SelectedItem="{Binding SelectedPLC}"
                   IsEditable="False" materialDesign:TextFieldAssist.HintOpacity=".26"></ComboBox>
+                
+               
             </Grid>
         </materialDesign:Card>
+        <local:Mask Grid.Row="2" Grid.ColumnSpan="6" />
     </Grid>
 </UserControl>
